@@ -13,8 +13,8 @@
 #import "QuickGold.h"
 
 bool Debug_ = true;
-static int numMatchesToShow = 8;
-
+int numMatchesToShow = 8;
+bool isGrabbingOn = false;
 NSArray *allApps;
 NSMutableArray *launchieNames;
 NSMutableArray *matches;
@@ -40,6 +40,45 @@ QuickGold *quickgold;
 - (void) qk_loadApplications: (BOOL) b;
 - (void) qk_activate;
 - (void) qk_deactivate;
+- (void) qk_setGrabbedIcon:(id) icon;
+@end
+
+@interface QGTableCell : UITableViewCell { 
+
+}
+
+@end
+
+@implementation QGTableCell
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+        /*
+        CGRect bounds = self.bounds;
+        CGRect rect = bounds;
+        
+        float fraction = 0.65;
+        rect.size.width *= fraction;
+        rect.origin.x = bounds.size.width * (1 - fraction);
+        UITextField *theTextField = [[UITextField alloc] initWithFrame:rect];
+        self.textField = theTextField;
+        textField.returnKeyType = UIReturnKeyGo;
+        textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textField.textColor = [UIColor darkGrayColor];
+        [self addSubview:textField];
+        [theTextField release];
+        */
+    }
+    return self;
+}
+
+- (void)dealloc {
+    // Release allocated resources.
+    [super dealloc];
+}
+
 @end
 
 /* WinterBoard Backend {{{ */
@@ -101,6 +140,7 @@ static void __sbapplicationcontroller_loadapplications(id<QuickGoldMethods> self
 
 @class SBApplication;
 @class SBUIController;
+@class SBIconController;
 
 static void __sbuicontroller_clickedMenuButton(SBUIController* self, SEL sel) { 
     if ([[NSClassFromString(@"SBAwayController") sharedAwayController] isLocked]) { 
@@ -114,9 +154,24 @@ static void __sbuicontroller_clickedMenuButton(SBUIController* self, SEL sel) {
         goto done;
     }
 
+    if (isGrabbingOn) { 
+        NSLog ([NSString stringWithFormat:@" icon movement on - about to be turned off with menu click"]);
+        isGrabbingOn = false;
+        goto done;
+    }
+
     [quickgold toggleBrowser];
 done:
     [self qk_clickedMenuButton];
+}
+
+static void __sbiconcontroller_setGrabbedIcon(SBIconController *self, SEL sel, id icon) { 
+    isGrabbingOn = true;
+    [self qk_setGrabbedIcon:icon];
+}
+static void __sbiconcontroller_setIconToInstall(SBIconController *self, SEL sel, id icon) { 
+    NSLog ([NSString stringWithFormat:@" icon to install %@" , icon]);
+    [self qk_setIconToInstall:icon];
 }
 
 __attribute__((constructor))
@@ -130,6 +185,8 @@ static void QuickGoldInitializer()
     if ([appId hasSuffix: @"springboard"]) { 
         QuickGoldRename(YES, "SBUIController", "clickedMenuButton", (IMP)&__sbuicontroller_clickedMenuButton);
         QuickGoldRename(YES, "SBApplicationController", "loadApplications:", (IMP)&__sbapplicationcontroller_loadapplications);
+        QuickGoldRename(YES, "SBIconController", "setGrabbedIcon:", (IMP)&__sbiconcontroller_setGrabbedIcon);
+        QuickGoldRename(YES, "SBIconController", "setIconToInstall:", (IMP)&__sbiconcontroller_setIconToInstall);
 
         quickgold = [[QuickGold alloc] init];
         [quickgold performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
@@ -164,14 +221,16 @@ NSInteger appSort(id num1, id num2, void *context) {
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, 320, 50)];
     searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    searchBar.placeholder = @"apps, contacts, phone#s, websites";
     searchField = [(NSArray *)[searchBar subviews] objectAtIndex:0];
     searchField.returnKeyType = UIReturnKeyGo;
+    searchField.keyboardType = UIKeyboardTypeURL;
 
     searchField.delegate = self;
     searchBar.delegate = self;
     [browserWindow addSubview:searchBar];
 
-    matchTable = [[[UITableView alloc] initWithFrame:CGRectMake(20, 70, 280, 200) style:UITableViewStylePlain] autorelease];
+    matchTable = [[[UITableView alloc] initWithFrame:CGRectMake(0, 70, 320, 200) style:UITableViewStylePlain] autorelease];
     matchTable.dataSource = self;
     matchTable.delegate = self;
     [browserWindow addSubview:matchTable];
@@ -192,12 +251,19 @@ NSInteger appSort(id num1, id num2, void *context) {
     NSLog(@"loading springboard apps");
     if (allApps) { 
         for (id<QuickGoldMethods> app in allApps) {
-            [launchieNames addObject:[app displayName]];
+            NSString *name = [app displayName];
+            NSString *bundle = [app bundleIdentifier];
+
+            if ([bundle hasSuffix:@"springboard"] || [bundle hasSuffix:@"DemoApp"]) { 
+                continue;
+            }
+
+            [launchieNames addObject:name];
             NSMutableDictionary *d = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                 app, @"appObject",
                 @"app", @"type",
                 nil];
-            [launchieDetailsByName setObject:d forKey:[app displayName]];
+            [launchieDetailsByName setObject:d forKey:name];
         }
     }
 }
@@ -375,7 +441,7 @@ NSInteger sortMatchesByLocation (id name1, id name2, void *context) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = (UITableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+    UITableViewCell *cell = (QGTableCell *) [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"MyIdentifier"] autorelease];
     }
@@ -456,7 +522,7 @@ void UIKeyboardDisableAutomaticAppearance(void);
     [browserWindow setAlpha: 0];
     [UIView beginAnimations: nil context: nil];
     [UIView setAnimationDuration: 0.2];
-    [browserWindow setAlpha: 0.75];
+    [browserWindow setAlpha: 0.95];
     [UIView commitAnimations];
     isDisplaying = YES;
     [browserWindow makeKeyAndVisible];
