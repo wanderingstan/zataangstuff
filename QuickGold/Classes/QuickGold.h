@@ -6,6 +6,9 @@
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
 
+void QuickGoldInject(const char *classname, const char *oldname, IMP newimp, const char *type);
+void QuickGoldRename(bool instance, const char *classname, const char *oldname, IMP newimp);
+
 @interface UIKeyboard : UIView { 
 };
 
@@ -15,7 +18,6 @@
 
 @end
 
-
 NSBundle * myBundle;
 
 @interface QuickGold : NSObject <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
@@ -24,7 +26,10 @@ NSBundle * myBundle;
     UISearchBar *searchBar;
     UITextField *searchField;
     UITableView *matchTable;
+    BOOL isGrabbingOn;
 }
+
+@property BOOL isGrabbingOn;
 
 - (void) didInjectIntoProgram;
 - (void) loadApplications;

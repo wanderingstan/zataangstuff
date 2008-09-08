@@ -14,7 +14,6 @@
 
 bool Debug_ = true;
 int numMatchesToShow = 8;
-bool isGrabbingOn = false;
 NSArray *allApps;
 NSMutableArray *launchieNames;
 NSMutableArray *matches;
@@ -154,9 +153,11 @@ static void __sbuicontroller_clickedMenuButton(SBUIController* self, SEL sel) {
         goto done;
     }
 
-    if (isGrabbingOn) { 
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:@"/var/mobile/Library/Preferences/.quickgold.wigglebug.ok"]
+        && quickgold.isGrabbingOn) { 
         NSLog ([NSString stringWithFormat:@" icon movement on - about to be turned off with menu click"]);
-        isGrabbingOn = false;
+        quickgold.isGrabbingOn = false;
         goto done;
     }
 
@@ -166,7 +167,10 @@ done:
 }
 
 static void __sbiconcontroller_setGrabbedIcon(SBIconController *self, SEL sel, id icon) { 
-    isGrabbingOn = true;
+    if (icon) {
+        NSLog ([NSString stringWithFormat:@"set grabbed icon called, icon = %@", icon]);
+        quickgold.isGrabbingOn = true;
+    }
     [self qk_setGrabbedIcon:icon];
 }
 static void __sbiconcontroller_setIconToInstall(SBIconController *self, SEL sel, id icon) { 
@@ -199,6 +203,8 @@ static void QuickGoldInitializer()
 
 @implementation QuickGold
 
+@synthesize isGrabbingOn;
+
 NSInteger appSort(id num1, id num2, void *context) {
     return [num1 localizedCaseInsensitiveCompare: num2];
 }
@@ -209,6 +215,7 @@ NSInteger appSort(id num1, id num2, void *context) {
 
 - (void) inject {
     NSLog([NSString stringWithFormat:@"QuickGold initializing %@", NSHomeDirectory()]);
+    isGrabbingOn = false;
 
     browserWindow = [[UIWindow alloc] initWithFrame: CGRectMake(0, 0, 320, 480)];
     [browserWindow setUserInteractionEnabled: YES];
