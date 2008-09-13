@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* LaunchHelperAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* SpringBridgeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* SpringBridgeAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		5463FBD80E5E98790091F08E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5463FBD70E5E98790091F08E /* AddressBook.framework */; };
 		5463FBE30E5E98870091F08E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5463FBE20E5E98870091F08E /* CoreGraphics.framework */; };
-		547626AA0E5E818700EAC233 /* LaunchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 547626A90E5E818700EAC233 /* LaunchHelper.m */; };
+		547626AA0E5E818700EAC233 /* SpringBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 547626A90E5E818700EAC233 /* SpringBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* LaunchHelperAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchHelperAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchHelperAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* LaunchHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaunchHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D3623240D0F684500981E51 /* SpringBridgeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBridgeAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* SpringBridgeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBridgeAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* SpringBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* LaunchHelper_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchHelper_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* SpringBridge_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBridge_Prefix.pch; sourceTree = "<group>"; };
 		5463FBD70E5E98790091F08E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5463FBE20E5E98870091F08E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		547626A80E5E818700EAC233 /* LaunchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchHelper.h; sourceTree = "<group>"; };
-		547626A90E5E818700EAC233 /* LaunchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchHelper.m; sourceTree = "<group>"; };
+		547626A80E5E818700EAC233 /* SpringBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBridge.h; sourceTree = "<group>"; };
+		547626A90E5E818700EAC233 /* SpringBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBridge.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,10 +51,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* LaunchHelperAppDelegate.h */,
-				1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */,
-				547626A80E5E818700EAC233 /* LaunchHelper.h */,
-				547626A90E5E818700EAC233 /* LaunchHelper.m */,
+				1D3623240D0F684500981E51 /* SpringBridgeAppDelegate.h */,
+				1D3623250D0F684500981E51 /* SpringBridgeAppDelegate.m */,
+				547626A80E5E818700EAC233 /* SpringBridge.h */,
+				547626A90E5E818700EAC233 /* SpringBridge.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -62,7 +62,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* LaunchHelper.app */,
+				1D6058910D05DD3D006BFB54 /* SpringBridge.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* LaunchHelper_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* SpringBridge_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -111,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* LaunchHelper */ = {
+		1D6058900D05DD3D006BFB54 /* SpringBridge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LaunchHelper" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SpringBridge" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -123,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = LaunchHelper;
-			productName = LaunchHelper;
-			productReference = 1D6058910D05DD3D006BFB54 /* LaunchHelper.app */;
+			name = SpringBridge;
+			productName = SpringBridge;
+			productReference = 1D6058910D05DD3D006BFB54 /* SpringBridge.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,14 +133,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LaunchHelper" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpringBridge" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* LaunchHelper */,
+				1D6058900D05DD3D006BFB54 /* SpringBridge */,
 			);
 		};
 /* End PBXProject section */
@@ -162,8 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* LaunchHelperAppDelegate.m in Sources */,
-				547626AA0E5E818700EAC233 /* LaunchHelper.m in Sources */,
+				1D3623260D0F684500981E51 /* SpringBridgeAppDelegate.m in Sources */,
+				547626AA0E5E818700EAC233 /* SpringBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,9 +178,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LaunchHelper_Prefix.pch;
+				GCC_PREFIX_HEADER = SpringBridge_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = LaunchHelper;
+				PRODUCT_NAME = SpringBridge;
 			};
 			name = Debug;
 		};
@@ -190,9 +190,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LaunchHelper_Prefix.pch;
+				GCC_PREFIX_HEADER = SpringBridge_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = LaunchHelper;
+				PRODUCT_NAME = SpringBridge;
 			};
 			name = Release;
 		};
@@ -228,7 +228,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LaunchHelper" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SpringBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -237,7 +237,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LaunchHelper" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpringBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

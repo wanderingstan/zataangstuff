@@ -230,6 +230,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -308,14 +310,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LaunchHelper.m</string>
+								<string>SpringBridge.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,34 +323,21 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LaunchHelper.m</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>548A23B40E7B914E0067B8B1</string>
+										<string>SpringBridge.m</string>
 										<key>history</key>
 										<array>
 											<string>547626B90E5E81CF00EAC233</string>
-											<string>5410DD1D0E5E8D5800DFD041</string>
 											<string>54E241B90E61096700E82FAC</string>
 											<string>54E241C70E61448000E82FAC</string>
 											<string>54E241C90E61448000E82FAC</string>
-											<string>5409115B0E6F40AC004E371A</string>
-											<string>5409115C0E6F40AC004E371A</string>
 											<string>5409115D0E6F40AC004E371A</string>
 											<string>5409125B0E6F9BF0004E371A</string>
 											<string>5409125D0E6F9BF0004E371A</string>
-											<string>540912830E6FA368004E371A</string>
-											<string>548A23A40E7B8EAF0067B8B1</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>547626BC0E5E81CF00EAC233</string>
 											<string>547626BD0E5E81CF00EAC233</string>
 											<string>547626BE0E5E81CF00EAC233</string>
-											<string>547626BF0E5E81CF00EAC233</string>
-											<string>5410DD220E5E8D5800DFD041</string>
-											<string>5410DD2A0E5E8D5800DFD041</string>
 											<string>54E241BA0E61096700E82FAC</string>
 											<string>54E241CF0E61448000E82FAC</string>
 											<string>54E241D10E61448000E82FAC</string>
@@ -411,9 +398,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>548A23650E7B874A0067B8B1</string>
+				<string>54CE9BDF0E7B98C100EF0D56</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>548A23660E7B874A0067B8B1</string>
+				<string>54CE9BE00E7B98C100EF0D56</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -547,9 +534,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>5410DD310E5E8D5800DFD041</string>
-		<string>/Users/ashu/Documents/Applications/svn/zataangstuff/LaunchHelper/LaunchHelper.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/ashu/Documents/Applications/svn/zataangstuff/SpringBridge/SpringBridge.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>143 176 1353 789 0 0 1680 1028 </string>
@@ -582,7 +569,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1050, 387}}</string>
 								<key>RubberWindowFrame</key>
-								<string>562 293 1050 669 0 0 1680 1028 </string>
+								<string>500 293 1050 669 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -606,7 +593,7 @@
 								<key>Frame</key>
 								<string>{{0, 392}, {1050, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>562 293 1050 669 0 0 1680 1028 </string>
+								<string>500 293 1050 669 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -629,14 +616,14 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5410DD310E5E8D5800DFD041</string>
-				<string>548A23670E7B874A0067B8B1</string>
+				<string>54CE9BE10E7B98C100EF0D56</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildV3</string>
 			<key>WindowString</key>
-			<string>562 293 1050 669 0 0 1680 1028 </string>
+			<string>500 293 1050 669 0 0 1680 1028 </string>
 			<key>WindowToolGUID</key>
 			<string>5410DD310E5E8D5800DFD041</string>
 			<key>WindowToolIsVisible</key>
@@ -749,13 +736,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>548A23850E7B8A330067B8B1</string>
+				<string>54CE9BE20E7B98C100EF0D56</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>548A23860E7B8A330067B8B1</string>
-				<string>548A23870E7B8A330067B8B1</string>
-				<string>548A23880E7B8A330067B8B1</string>
-				<string>548A23890E7B8A330067B8B1</string>
-				<string>548A238A0E7B8A330067B8B1</string>
+				<string>54CE9BE30E7B98C100EF0D56</string>
+				<string>54CE9BE40E7B98C100EF0D56</string>
+				<string>54CE9BE50E7B98C100EF0D56</string>
+				<string>54CE9BE60E7B98C100EF0D56</string>
+				<string>54CE9BE70E7B98C100EF0D56</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
