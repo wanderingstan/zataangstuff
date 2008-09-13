@@ -6,17 +6,10 @@
 			547626900E5E7DCC00EAC233 /* SpringBridge */,
 		);
 	};
-	28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 2010}}";
-			sepNavSelRange = "{5593, 0}";
-			sepNavVisRange = "{0, 1648}";
-		};
-	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 547626900E5E7DCC00EAC233 /* SpringBridge */;
-		activeSDKPreference = iphoneos2.0;
+		activeSDKPreference = iphonesimulator2.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* SpringBridge */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* SpringBridge */,
@@ -102,8 +95,8 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 243018674;
-			PBXWorkspaceStateSaveDate = 243018674;
+			PBXPerProjectTemplateStateSaveDate = 243018712;
+			PBXWorkspaceStateSaveDate = 243018712;
 		};
 		perUserProjectItems = {
 			5409115D0E6F40AC004E371A /* PBXTextBookmark */ = 5409115D0E6F40AC004E371A /* PBXTextBookmark */;

@@ -277,8 +277,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
-									<integer>0</integer>
+									<integer>17</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -400,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>541594880E7C2BB600B53EF8</string>
+				<string>540761E90E7C2BDA00FE4D4E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>541594890E7C2BB600B53EF8</string>
+				<string>540761EA0E7C2BDA00FE4D4E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -536,6 +535,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>5410DD310E5E8D5800DFD041</string>
 		<string>/Users/ashu/Documents/Applications/svn/zataangstuff/SpringBridge/SpringBridge.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -577,12 +577,10 @@
 							<string>144pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-								<string>{{0, 186}, {1050, 293}}</string>
+								<string>{{0, 121}, {1050, 358}}</string>
 								<key>PBXProjectModuleGUID</key>
 								<string>XCMainBuildResultsModuleGUID</string>
 								<key>PBXProjectModuleLabel</key>
@@ -620,7 +618,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5410DD310E5E8D5800DFD041</string>
-				<string>541594690E7BAA9000B53EF8</string>
+				<string>540761EE0E7C2BF600FE4D4E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
