@@ -25,6 +25,7 @@ NSBundle * myBundle;
     bool isDisplaying;
     UISearchBar *searchBar;
     UITextField *searchField;
+    UIView *searchBarAndTableView;
     UITableView *matchTable;
     BOOL isGrabbingOn;
 }
@@ -32,9 +33,15 @@ NSBundle * myBundle;
 @property BOOL isGrabbingOn;
 
 - (void) didInjectIntoProgram;
-- (void) loadApplications;
-- (void) loadAddressBookEntries;
-- (void) loadWebClips;
+- (void) indexApplications;
+- (void) indexAddressBookEntries;
+- (void) indexAllWebClips;
+- (void) indexApp:(id) app withName:(NSString *)name;
+- (void) indexWebClip:(NSString *) url withTitle:(NSString *) title;
+- (void) removeWebClip:(NSString *) title;
+- (void) removeApp:(NSString *)name;
+- (void) removeAppOrWebClipByName:(NSString *) name;
+
 - (void) hideBrowser;
 - (void) displayBrowser;
 - (void) toggleBrowser;
@@ -42,6 +49,8 @@ NSBundle * myBundle;
 - (void) computeMatches:(NSString *) searchText;
 - (void) customLaunch:(id)what withType:(NSString *)type;
 - (BOOL) isNumber:(NSString *)text;
+- (BOOL) isBookmarkIcon:(id) icon;
+- (BOOL) isDownloadingIcon:(id) icon;
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
@@ -52,4 +61,6 @@ NSBundle * myBundle;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
+- (void)onNewIconInstallation:(id) icon;
+- (void)onIconUninstall:(id) icon;
 @end

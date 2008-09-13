@@ -1,36 +1,36 @@
 // !$*UTF8*$!
 {
-	1D3623240D0F684500981E51 /* QuickGoldAppDelegate.h */ = {
+	1D3623240D0F684500981E51 /* LaunchHelperAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 357}";
 		};
 	};
-	1D3623250D0F684500981E51 /* QuickGoldAppDelegate.m */ = {
+	1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
 			sepNavSelRange = "{368, 0}";
 			sepNavVisRange = "{0, 464}";
 		};
 	};
-	1D6058900D05DD3D006BFB54 /* QuickGold */ = {
+	1D6058900D05DD3D006BFB54 /* LaunchHelper */ = {
 		activeExec = 0;
 		executables = (
-			547626900E5E7DCC00EAC233 /* QuickGold */,
+			547626900E5E7DCC00EAC233 /* LaunchHelper */,
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = 547626900E5E7DCC00EAC233 /* QuickGold */;
+		activeExecutable = 547626900E5E7DCC00EAC233 /* LaunchHelper */;
 		activeSDKPreference = iphonesimulator2.0;
-		activeTarget = 1D6058900D05DD3D006BFB54 /* QuickGold */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* LaunchHelper */;
 		addToTargets = (
-			1D6058900D05DD3D006BFB54 /* QuickGold */,
+			1D6058900D05DD3D006BFB54 /* LaunchHelper */,
 		);
 		codeSenseManager = 547626960E5E7DEB00EAC233 /* Code sense */;
 		executables = (
-			547626900E5E7DCC00EAC233 /* QuickGold */,
+			547626900E5E7DCC00EAC233 /* LaunchHelper */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
@@ -52,8 +52,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					600,
-					496.20849609375,
+					548,
+					548.20849609375,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -109,8 +109,8 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 242628730;
-			PBXWorkspaceStateSaveDate = 242628730;
+			PBXPerProjectTemplateStateSaveDate = 242976559;
+			PBXWorkspaceStateSaveDate = 242976559;
 		};
 		perUserProjectItems = {
 			5409115B0E6F40AC004E371A /* PBXTextBookmark */ = 5409115B0E6F40AC004E371A /* PBXTextBookmark */;
@@ -118,19 +118,18 @@
 			5409115D0E6F40AC004E371A /* PBXTextBookmark */ = 5409115D0E6F40AC004E371A /* PBXTextBookmark */;
 			5409125B0E6F9BF0004E371A /* PBXTextBookmark */ = 5409125B0E6F9BF0004E371A /* PBXTextBookmark */;
 			5409125D0E6F9BF0004E371A /* PBXTextBookmark */ = 5409125D0E6F9BF0004E371A /* PBXTextBookmark */;
+			540912830E6FA368004E371A /* PBXTextBookmark */ = 540912830E6FA368004E371A /* PBXTextBookmark */;
 			5410DD1D0E5E8D5800DFD041 /* PBXTextBookmark */ = 5410DD1D0E5E8D5800DFD041 /* PBXTextBookmark */;
 			5410DD220E5E8D5800DFD041 /* PBXTextBookmark */ = 5410DD220E5E8D5800DFD041 /* PBXTextBookmark */;
 			5410DD2A0E5E8D5800DFD041 /* PBXTextBookmark */ = 5410DD2A0E5E8D5800DFD041 /* PBXTextBookmark */;
-			541BA7440E7712840029FC12 /* PBXTextBookmark */ = 541BA7440E7712840029FC12 /* PBXTextBookmark */;
-			541BA7450E7712840029FC12 /* PBXTextBookmark */ = 541BA7450E7712840029FC12 /* PBXTextBookmark */;
-			541BA7460E7712840029FC12 /* PBXTextBookmark */ = 541BA7460E7712840029FC12 /* PBXTextBookmark */;
-			541BA7470E7712840029FC12 /* PBXTextBookmark */ = 541BA7470E7712840029FC12 /* PBXTextBookmark */;
-			546393AE0E7597F800FC3E1C /* PBXTextBookmark */ = 546393AE0E7597F800FC3E1C /* PBXTextBookmark */;
 			547626B90E5E81CF00EAC233 /* PlistBookmark */ = 547626B90E5E81CF00EAC233 /* PlistBookmark */;
 			547626BC0E5E81CF00EAC233 /* PBXTextBookmark */ = 547626BC0E5E81CF00EAC233 /* PBXTextBookmark */;
 			547626BD0E5E81CF00EAC233 /* PBXTextBookmark */ = 547626BD0E5E81CF00EAC233 /* PBXTextBookmark */;
 			547626BE0E5E81CF00EAC233 /* PlistBookmark */ = 547626BE0E5E81CF00EAC233 /* PlistBookmark */;
 			547626BF0E5E81CF00EAC233 /* PBXTextBookmark */ = 547626BF0E5E81CF00EAC233 /* PBXTextBookmark */;
+			548A23A40E7B8EAF0067B8B1 /* PBXTextBookmark */ = 548A23A40E7B8EAF0067B8B1 /* PBXTextBookmark */;
+			548A23B40E7B914E0067B8B1 /* PBXTextBookmark */ = 548A23B40E7B914E0067B8B1 /* PBXTextBookmark */;
+			54E241B90E61096700E82FAC /* PBXTextBookmark */ = 54E241B90E61096700E82FAC /* PBXTextBookmark */;
 			54E241BA0E61096700E82FAC /* PBXTextBookmark */ = 54E241BA0E61096700E82FAC /* PBXTextBookmark */;
 			54E241C70E61448000E82FAC /* PBXTextBookmark */ = 54E241C70E61448000E82FAC /* PBXTextBookmark */;
 			54E241C90E61448000E82FAC /* PBXTextBookmark */ = 54E241C90E61448000E82FAC /* PBXTextBookmark */;
@@ -148,7 +147,7 @@
 			sepNavVisRange = "{0, 350}";
 		};
 	};
-	32CA4F630368D1EE00C91783 /* QuickGold_Prefix.pch */ = {
+	32CA4F630368D1EE00C91783 /* LaunchHelper_Prefix.pch */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {633, 369}}";
 			sepNavSelRange = "{0, 0}";
@@ -161,16 +160,11 @@
 		name = CGGeometry.h;
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator2.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 4770}}";
-			sepNavSelRange = "{453, 0}";
-			sepNavVisRange = "{0, 548}";
-		};
 	};
 	5409115B0E6F40AC004E371A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 1D3623250D0F684500981E51 /* QuickGoldAppDelegate.m */;
-		name = "QuickGoldAppDelegate.m: 18";
+		fRef = 1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */;
+		name = "LaunchHelperAppDelegate.m: 18";
 		rLen = 0;
 		rLoc = 368;
 		rType = 0;
@@ -179,8 +173,8 @@
 	};
 	5409115C0E6F40AC004E371A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 1D3623240D0F684500981E51 /* QuickGoldAppDelegate.h */;
-		name = "QuickGoldAppDelegate.h: 1";
+		fRef = 1D3623240D0F684500981E51 /* LaunchHelperAppDelegate.h */;
+		name = "LaunchHelperAppDelegate.h: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
@@ -231,10 +225,20 @@
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator2.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UISearchBar.h;
 		sourceTree = "<absolute>";
 	};
+	540912830E6FA368004E371A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 547626A80E5E818700EAC233 /* LaunchHelper.h */;
+		name = "LaunchHelper.h: 41";
+		rLen = 0;
+		rLoc = 948;
+		rType = 0;
+		vrLen = 772;
+		vrLoc = 300;
+	};
 	5410DD1D0E5E8D5800DFD041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 32CA4F630368D1EE00C91783 /* QuickGold_Prefix.pch */;
-		name = "QuickGold_Prefix.pch: 1";
+		fRef = 32CA4F630368D1EE00C91783 /* LaunchHelper_Prefix.pch */;
+		name = "LaunchHelper_Prefix.pch: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
@@ -243,8 +247,8 @@
 	};
 	5410DD220E5E8D5800DFD041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 1D3623240D0F684500981E51 /* QuickGoldAppDelegate.h */;
-		name = "QuickGoldAppDelegate.h: 1";
+		fRef = 1D3623240D0F684500981E51 /* LaunchHelperAppDelegate.h */;
+		name = "LaunchHelperAppDelegate.h: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
@@ -253,84 +257,15 @@
 	};
 	5410DD2A0E5E8D5800DFD041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 32CA4F630368D1EE00C91783 /* QuickGold_Prefix.pch */;
-		name = "QuickGold_Prefix.pch: 1";
+		fRef = 32CA4F630368D1EE00C91783 /* LaunchHelper_Prefix.pch */;
+		name = "LaunchHelper_Prefix.pch: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 177;
 		vrLoc = 0;
 	};
-	541BA6C60E763F2B0029FC12 /* QuickGold.m */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = QuickGold.m;
-		path = /Users/ashu/Documents/Applications/svn/zataangstuff/QuickGold/Classes/QuickGold.m;
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 10695}}";
-			sepNavSelRange = "{1402, 0}";
-			sepNavVisRange = "{1054, 1490}";
-			sepNavWindowFrame = "{{15, 234}, {961, 789}}";
-		};
-	};
-	541BA7440E7712840029FC12 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 54030F140E5FE500005E67FD /* CGGeometry.h */;
-		name = "CGGeometry.h: 30";
-		rLen = 0;
-		rLoc = 453;
-		rType = 0;
-		vrLen = 548;
-		vrLoc = 0;
-	};
-	541BA7450E7712840029FC12 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 541BA6C60E763F2B0029FC12 /* QuickGold.m */;
-		name = "QuickGold.m: 57";
-		rLen = 0;
-		rLoc = 1402;
-		rType = 0;
-		vrLen = 1490;
-		vrLoc = 1054;
-	};
-	541BA7460E7712840029FC12 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 54030F140E5FE500005E67FD /* CGGeometry.h */;
-		name = "CGGeometry.h: 30";
-		rLen = 0;
-		rLoc = 453;
-		rType = 0;
-		vrLen = 548;
-		vrLoc = 0;
-	};
-	541BA7470E7712840029FC12 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 541BA7480E7712840029FC12 /* QuickGold.m */;
-		name = "QuickGold.m: 682";
-		rLen = 0;
-		rLoc = 24114;
-		rType = 0;
-		vrLen = 779;
-		vrLoc = 0;
-	};
-	541BA7480E7712840029FC12 /* QuickGold.m */ = {
-		isa = PBXFileReference;
-		name = QuickGold.m;
-		path = /Users/ashu/Documents/Applications/QuickGold/Classes/QuickGold.m;
-		sourceTree = "<absolute>";
-	};
-	546393AE0E7597F800FC3E1C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 547626A80E5E818700EAC233 /* QuickGold.h */;
-		name = "QuickGold.h: 32";
-		rLen = 0;
-		rLoc = 776;
-		rType = 0;
-		vrLen = 869;
-		vrLoc = 0;
-	};
-	547626900E5E7DCC00EAC233 /* QuickGold */ = {
+	547626900E5E7DCC00EAC233 /* LaunchHelper */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
 		);
@@ -349,7 +284,7 @@
 		executableSystemSymbolLevel = 0;
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
-		name = QuickGold;
+		name = LaunchHelper;
 		sourceDirectories = (
 		);
 	};
@@ -364,18 +299,18 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	547626A80E5E818700EAC233 /* QuickGold.h */ = {
+	547626A80E5E818700EAC233 /* LaunchHelper.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 960}}";
-			sepNavSelRange = "{776, 0}";
-			sepNavVisRange = "{0, 869}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 780}}";
+			sepNavSelRange = "{948, 0}";
+			sepNavVisRange = "{300, 772}";
 		};
 	};
-	547626A90E5E818700EAC233 /* QuickGold.m */ = {
+	547626A90E5E818700EAC233 /* LaunchHelper.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 9436}}";
-			sepNavSelRange = "{210, 0}";
-			sepNavVisRange = "{2301, 1300}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 3201}}";
+			sepNavSelRange = "{7251, 0}";
+			sepNavVisRange = "{5281, 1438}";
 		};
 	};
 	547626B90E5E81CF00EAC233 /* PlistBookmark */ = {
@@ -386,14 +321,14 @@
 		kPath = (
 			LSRequiresIPhoneOS,
 		);
-		name = /Users/ashu/Documents/Applications/QuickGold/Info.plist;
+		name = /Users/ashu/Documents/Applications/LaunchHelper/Info.plist;
 		rLen = 0;
 		rLoc = 2147483647;
 	};
 	547626BC0E5E81CF00EAC233 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 1D3623250D0F684500981E51 /* QuickGoldAppDelegate.m */;
-		name = "QuickGoldAppDelegate.m: 1";
+		fRef = 1D3623250D0F684500981E51 /* LaunchHelperAppDelegate.m */;
+		name = "LaunchHelperAppDelegate.m: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
@@ -418,19 +353,57 @@
 		kPath = (
 			LSRequiresIPhoneOS,
 		);
-		name = /Users/ashu/Documents/Applications/QuickGold/Info.plist;
+		name = /Users/ashu/Documents/Applications/LaunchHelper/Info.plist;
 		rLen = 0;
 		rLoc = 2147483647;
 	};
 	547626BF0E5E81CF00EAC233 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 547626A80E5E818700EAC233 /* QuickGold.h */;
-		name = "QuickGold.h: 10";
+		fRef = 547626A80E5E818700EAC233 /* LaunchHelper.h */;
+		name = "LaunchHelper.h: 10";
 		rLen = 0;
 		rLoc = 135;
 		rType = 0;
 		vrLen = 208;
 		vrLoc = 0;
+	};
+	548A23A10E7B8EA50067B8B1 /* LaunchHelper.m */ = {
+		isa = PBXFileReference;
+		name = LaunchHelper.m;
+		path = /Users/ashu/Documents/Applications/svn/zataangstuff/LaunchHelper/Classes/LaunchHelper.m;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 3201}}";
+			sepNavSelRange = "{7251, 0}";
+			sepNavVisRange = "{5481, 1291}";
+		};
+	};
+	548A23A40E7B8EAF0067B8B1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 548A23A10E7B8EA50067B8B1 /* LaunchHelper.m */;
+		rLen = 1;
+		rLoc = 175;
+		rType = 1;
+	};
+	548A23B40E7B914E0067B8B1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 547626A90E5E818700EAC233 /* LaunchHelper.m */;
+		name = "LaunchHelper.m: 209";
+		rLen = 0;
+		rLoc = 7251;
+		rType = 0;
+		vrLen = 1438;
+		vrLoc = 5281;
+	};
+	54E241B90E61096700E82FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 54030F140E5FE500005E67FD /* CGGeometry.h */;
+		name = "CGGeometry.h: 29";
+		rLen = 16;
+		rLoc = 437;
+		rType = 0;
+		vrLen = 393;
+		vrLoc = 279;
 	};
 	54E241BA0E61096700E82FAC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
