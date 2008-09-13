@@ -1,6 +1,6 @@
 //
-//  LaunchHelper.h
-//  LaunchHelper
+//  SpringBridge.h
+//  SpringBridge
 //
 
 #import <UIKit/UIKit.h>
@@ -8,7 +8,7 @@
 
 NSBundle * myBundle;
 
-@interface LaunchHelper : NSObject {
+@interface SpringBridge : NSObject {
     bool isDisplaying;
 }
 
@@ -18,7 +18,7 @@ NSBundle * myBundle;
 
 @end
 
-@interface LaunchHelperRelay : NSObject { 
+@interface SpringBridgeRelay : NSObject { 
     int sock;
     struct sockaddr_in serverAddr;
 }

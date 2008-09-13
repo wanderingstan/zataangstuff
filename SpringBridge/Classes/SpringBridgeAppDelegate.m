@@ -1,10 +1,10 @@
 //
-//  LaunchHelperAppDelegate.m
-//  LaunchHelper
+//  SpringBridgeAppDelegate.m
+//  SpringBridge
 //
-#import "LaunchHelperAppDelegate.h"
+#import "SpringBridgeAppDelegate.h"
 
-@implementation LaunchHelperAppDelegate
+@implementation SpringBridgeAppDelegate
 
 @synthesize window;
 

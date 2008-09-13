@@ -1,6 +1,6 @@
 //
-//  LaunchHelper.m
-//  LaunchHelper
+//  SpringBridge.m
+//  SpringBridge
 //
 
 #include <objc/runtime.h>
@@ -12,25 +12,19 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#import "LaunchHelper.h"
-#define LAUNCH_HELPER_PORT 30000
+#import "SpringBridge.h"
+#define SPRING_BRIDGE_PORT 30000
 #define BUFSIZE 256
 
 bool Debug_ = true;
 bool Engineer_ = false;
 
-NSMutableArray * sbIcons;
-NSArray * allApps;
 BOOL isSpringBoard;
-NSMutableDictionary * prefs;
-NSMutableArray *launchieNames;
-NSMutableArray *matches;
-NSMutableDictionary *launchieDetailsByName;
-LaunchHelper *lhelper;
-LaunchHelperRelay *relay;
+SpringBridge *sbridge;
+SpringBridgeRelay *relay;
 
 #define WBPrefix "lh_"
-void LaunchHelperInject(const char *classname, const char *oldname, IMP newimp, const char *type) {
+void SpringBridgeInject(const char *classname, const char *oldname, IMP newimp, const char *type) {
     Class _class = objc_getClass(classname);
     if (_class == nil)
         return;
@@ -40,7 +34,7 @@ void LaunchHelperInject(const char *classname, const char *oldname, IMP newimp, 
     NSLog([NSString stringWithFormat:@"injected %s successfully!", oldname]);
 }
 
-void LaunchHelperRename(bool instance, const char *classname, const char *oldname, IMP newimp) {
+void SpringBridgeRename(bool instance, const char *classname, const char *oldname, IMP newimp) {
     NSLog(@"Renaming %s::%s", classname, oldname);
     Class _class = objc_getClass(classname);
     if (_class == nil) {
@@ -81,7 +75,7 @@ done:
     free(methods);
 }
 
-static void LaunchHelper_uiapplication_specialLaunchApp(id self, SEL sel, NSString *identifier) {
+static void SpringBridge_uiapplication_specialLaunchApp(id self, SEL sel, NSString *identifier) {
     [relay sendAppForLaunch:identifier];
 }
 
@@ -89,38 +83,38 @@ static void LaunchHelper_uiapplication_specialLaunchApp(id self, SEL sel, NSStri
 @class SBUIController;
 
 __attribute__((constructor))
-static void LaunchHelperInitializer()
+static void SpringBridgeInitializer()
 {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    NSLog(@"LaunchHelper.dylib: The main injection constructor called");
+    NSLog(@"SpringBridge.dylib: The main injection constructor called");
     
-    lhelper = nil;
+    sbridge = nil;
     relay = nil;
     
     NSString *appId = [[NSBundle mainBundle] bundleIdentifier];
     if ([appId hasSuffix: @"springboard"]) { 
         isSpringBoard = YES;
-        lhelper = [[LaunchHelper alloc] init];
-        [lhelper performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
+        sbridge = [[SpringBridge alloc] init];
+        [sbridge performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
     } else {
         isSpringBoard = NO;
-        LaunchHelperInject("UIApplication", "specialLaunchApp:", (IMP)&LaunchHelper_uiapplication_specialLaunchApp, "");
+        SpringBridgeInject("UIApplication", "specialLaunchApp:", (IMP)&SpringBridge_uiapplication_specialLaunchApp, "");
         
-        relay = [[LaunchHelperRelay alloc] init];
+        relay = [[SpringBridgeRelay alloc] init];
         [relay performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
     } 
     
     [pool release]; 
 }
 
-@implementation LaunchHelper
+@implementation SpringBridge
 
 - (void) didInjectIntoProgram {
     [self performSelector: @selector(inject) withObject: nil afterDelay: 0.1];
 }
 
 - (void) inject {
-    NSLog(@"LaunchHelper initializing");
+    NSLog(@"SpringBridge initializing");
     [self listenForRelayConnections];
 }
 
@@ -139,7 +133,7 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
         id appController = [SBApplicationController sharedInstance];
         NSArray *apps = [appController applicationsWithBundleIdentifier:str];
         if ([apps count] > 0) { 
-            [lhelper performSelector:@selector(launchTheApp:) withObject:[apps objectAtIndex:0] afterDelay: 0.1];
+            [sbridge performSelector:@selector(launchTheApp:) withObject:[apps objectAtIndex:0] afterDelay: 0.1];
         } 
     }
 }
@@ -155,18 +149,18 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
     CFSocketContext ctx = {0, self, NULL, NULL, NULL};
     CFSocketRef sock = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, 
                                       IPPROTO_UDP, kCFSocketDataCallBack, (CFSocketCallBack)&relayDataCallBack, &ctx);
-    if (!sock) { NSLog(@"LaunchHelper: Failed to create listen socket"); return; }
+    if (!sock) { NSLog(@"SpringBridge: Failed to create listen socket"); return; }
     struct sockaddr_in addr4;
     memset(&addr4, 0, sizeof(addr4));
     addr4.sin_len = sizeof(addr4);
     addr4.sin_family = AF_INET;
-    addr4.sin_port = htons(LAUNCH_HELPER_PORT);
+    addr4.sin_port = htons(SPRING_BRIDGE_PORT);
     addr4.sin_addr.s_addr = inet_addr("127.0.0.1");
     NSData *address4 = [NSData dataWithBytes:&addr4 length:sizeof(addr4)];
 
     CFSocketError err;
     if ((err = CFSocketSetAddress(sock, (CFDataRef)address4)) != kCFSocketSuccess) {
-        NSLog(@"LaunchHelper: Failed to bind socket to port: error=%@", strerror(errno));
+        NSLog(@"SpringBridge: Failed to bind socket to port: error=%@", strerror(errno));
         CFRelease(sock);
         return;
     }
@@ -180,18 +174,18 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
 
 @end
 
-@implementation LaunchHelperRelay
+@implementation SpringBridgeRelay
 
 - (void) didInjectIntoProgram {
     [self performSelector: @selector(inject) withObject: nil afterDelay: 0.1];
 }
 
 - (void) inject {
-    NSLog(@"LaunchHelperRelay inject initializing");
+    NSLog(@"SpringBridgeRelay inject initializing");
     sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_len = sizeof(struct sockaddr_in);
-    serverAddr.sin_port = htons(LAUNCH_HELPER_PORT);
+    serverAddr.sin_port = htons(SPRING_BRIDGE_PORT);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 }
 

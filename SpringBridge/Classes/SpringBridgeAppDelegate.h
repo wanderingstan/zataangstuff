@@ -1,13 +1,13 @@
 //
-//  LaunchHelperAppDelegate.h
-//  LaunchHelper
+//  SpringBridgeAppDelegate.h
+//  SpringBridge
 //
 
 #import <UIKit/UIKit.h>
 
-@class LaunchHelperViewController;
+@class SpringBridgeViewController;
 
-@interface LaunchHelperAppDelegate : NSObject <UIApplicationDelegate> {
+@interface SpringBridgeAppDelegate : NSObject <UIApplicationDelegate> {
 	IBOutlet UIWindow *window;
 }
 
