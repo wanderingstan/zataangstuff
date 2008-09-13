@@ -277,7 +277,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
+									<integer>3</integer>
+									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -316,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainWindow.xib</string>
+								<string>SpringBridge.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,24 +326,31 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainWindow.xib</string>
+										<string>SpringBridge.m</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>546FE45F0E7C2C3100E690FD</string>
 										<key>history</key>
 										<array>
 											<string>547626B90E5E81CF00EAC233</string>
 											<string>54E241B90E61096700E82FAC</string>
 											<string>54E241C70E61448000E82FAC</string>
-											<string>54E241C90E61448000E82FAC</string>
-											<string>5409115D0E6F40AC004E371A</string>
 											<string>5409125B0E6F9BF0004E371A</string>
 											<string>5409125D0E6F9BF0004E371A</string>
+											<string>546FE4580E7C2C3100E690FD</string>
+											<string>546FE4590E7C2C3100E690FD</string>
+											<string>546FE45A0E7C2C3100E690FD</string>
+											<string>546FE45B0E7C2C3100E690FD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>547626BD0E5E81CF00EAC233</string>
 											<string>547626BE0E5E81CF00EAC233</string>
 											<string>54E241BA0E61096700E82FAC</string>
 											<string>54E241CF0E61448000E82FAC</string>
-											<string>54E241D10E61448000E82FAC</string>
+											<string>546FE45C0E7C2C3100E690FD</string>
+											<string>546FE45D0E7C2C3100E690FD</string>
+											<string>546FE45E0E7C2C3100E690FD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -399,9 +408,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>540761E90E7C2BDA00FE4D4E</string>
+				<string>546FE4600E7C2C3100E690FD</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>540761EA0E7C2BDA00FE4D4E</string>
+				<string>546FE4610E7C2C3100E690FD</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -536,6 +545,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>5410DD310E5E8D5800DFD041</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/ashu/Documents/Applications/svn/zataangstuff/SpringBridge/SpringBridge.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -580,7 +590,7 @@
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-								<string>{{0, 121}, {1050, 358}}</string>
+								<string>{{0, 47}, {1050, 432}}</string>
 								<key>PBXProjectModuleGUID</key>
 								<string>XCMainBuildResultsModuleGUID</string>
 								<key>PBXProjectModuleLabel</key>
@@ -618,7 +628,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5410DD310E5E8D5800DFD041</string>
-				<string>540761EE0E7C2BF600FE4D4E</string>
+				<string>546FE4620E7C2C3100E690FD</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -738,13 +748,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>541594750E7C29EE00B53EF8</string>
+				<string>546FE4630E7C2C3100E690FD</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>541594760E7C29EE00B53EF8</string>
-				<string>541594770E7C29EE00B53EF8</string>
-				<string>541594780E7C29EE00B53EF8</string>
-				<string>541594790E7C29EE00B53EF8</string>
-				<string>5415947A0E7C29EE00B53EF8</string>
+				<string>546FE4640E7C2C3100E690FD</string>
+				<string>546FE4650E7C2C3100E690FD</string>
+				<string>546FE4660E7C2C3100E690FD</string>
+				<string>546FE4670E7C2C3100E690FD</string>
+				<string>546FE4680E7C2C3100E690FD</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
