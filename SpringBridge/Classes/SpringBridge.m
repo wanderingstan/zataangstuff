@@ -31,11 +31,11 @@ void SpringBridgeInject(const char *classname, const char *oldname, IMP newimp, 
     if (!class_addMethod(_class, sel_registerName(oldname), newimp, type))
         NSLog(@"WB:Error: failed to inject [%s %s]", classname, oldname);
     
-    NSLog([NSString stringWithFormat:@"injected %s successfully!", oldname]);
+    // NSLog([NSString stringWithFormat:@"injected %s successfully!", oldname]);
 }
 
 void SpringBridgeRename(bool instance, const char *classname, const char *oldname, IMP newimp) {
-    NSLog(@"Renaming %s::%s", classname, oldname);
+    // NSLog(@"Renaming %s::%s", classname, oldname);
     Class _class = objc_getClass(classname);
     if (_class == nil) {
         if (Debug_)
@@ -70,7 +70,7 @@ void SpringBridgeRename(bool instance, const char *classname, const char *oldnam
 found:
     if (newimp != NULL)
         method_setImplementation(method, newimp);
-    NSLog(@"Rename success");
+    // NSLog(@"Rename success");
 done:
     free(methods);
 }
@@ -79,6 +79,13 @@ static void SpringBridge_uiapplication_specialLaunchApp(id self, SEL sel, NSStri
     [relay sendAppForLaunch:identifier];
 }
 
+/*
+static void SpringBridge_statusbar_mouseDown(id self, SEL sel, struct __GSEvent *x) {
+    NSLog ([NSString stringWithFormat:@"mouse down!"]);
+    [self lh_mouseDown:x];
+}
+*/
+
 @class SBApplication;
 @class SBUIController;
 
@@ -86,12 +93,13 @@ __attribute__((constructor))
 static void SpringBridgeInitializer()
 {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    NSLog(@"SpringBridge.dylib: The main injection constructor called");
+    // NSLog(@"SpringBridge.dylib: The main injection constructor called");
     
     sbridge = nil;
     relay = nil;
     
     NSString *appId = [[NSBundle mainBundle] bundleIdentifier];
+    // SpringBridgeRename(YES, "SBStatusBar", "mouseDown:", (IMP)&SpringBridge_statusbar_mouseDown);
     if ([appId hasSuffix: @"springboard"]) { 
         isSpringBoard = YES;
         sbridge = [[SpringBridge alloc] init];
@@ -119,7 +127,6 @@ static void SpringBridgeInitializer()
 }
 
 static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *info) {
-    NSLog ([NSString stringWithFormat:@" received data!"]);
     NSData * d = (NSData *) data;
     if ([d length] == BUFSIZE) {
         char *buf = (char *) [d bytes];
@@ -191,11 +198,9 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
 
 - (void) sendAppForLaunch:(NSString *) appId {
     char buf[BUFSIZE];
-    for (int i = 0; i < BUFSIZE; i++) { 
-        buf [i] = '\0';
-    }
+    memset (buf, 0, BUFSIZE);
     strncpy (buf, [appId UTF8String], sizeof (buf));
-    NSLog([NSString stringWithFormat:@"sending string: %s", buf]);
+    // NSLog([NSString stringWithFormat:@"sending string: %s", buf]);
     sendto(sock, &buf, BUFSIZE, 0, (struct sockaddr *) &serverAddr, sizeof(struct sockaddr_in));
 }
 @end

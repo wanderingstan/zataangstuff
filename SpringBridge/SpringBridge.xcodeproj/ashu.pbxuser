@@ -1,29 +1,22 @@
 // !$*UTF8*$!
 {
-	1D3623240D0F684500981E51 /* SpringBridgeAppDelegate.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 357}";
-		};
-	};
-	1D3623250D0F684500981E51 /* SpringBridgeAppDelegate.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
-			sepNavSelRange = "{368, 0}";
-			sepNavVisRange = "{0, 464}";
-		};
-	};
 	1D6058900D05DD3D006BFB54 /* SpringBridge */ = {
 		activeExec = 0;
 		executables = (
 			547626900E5E7DCC00EAC233 /* SpringBridge */,
 		);
 	};
+	28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 2010}}";
+			sepNavSelRange = "{5593, 0}";
+			sepNavVisRange = "{0, 1648}";
+		};
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 547626900E5E7DCC00EAC233 /* SpringBridge */;
-		activeSDKPreference = iphonesimulator2.0;
+		activeSDKPreference = iphoneos2.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* SpringBridge */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* SpringBridge */,
@@ -52,8 +45,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					548,
-					548.20849609375,
+					753,
+					343,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -109,22 +102,24 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 242981052;
-			PBXWorkspaceStateSaveDate = 242981052;
+			PBXPerProjectTemplateStateSaveDate = 242984408;
+			PBXWorkspaceStateSaveDate = 242984408;
 		};
 		perUserProjectItems = {
-			5409115D0E6F40AC004E371A /* PBXTextBookmark */ = 5409115D0E6F40AC004E371A /* PBXTextBookmark */;
-			5409125B0E6F9BF0004E371A /* PBXTextBookmark */ = 5409125B0E6F9BF0004E371A /* PBXTextBookmark */;
-			5409125D0E6F9BF0004E371A /* PBXTextBookmark */ = 5409125D0E6F9BF0004E371A /* PBXTextBookmark */;
-			547626B90E5E81CF00EAC233 /* PlistBookmark */ = 547626B90E5E81CF00EAC233 /* PlistBookmark */;
-			547626BD0E5E81CF00EAC233 /* PBXTextBookmark */ = 547626BD0E5E81CF00EAC233 /* PBXTextBookmark */;
-			547626BE0E5E81CF00EAC233 /* PlistBookmark */ = 547626BE0E5E81CF00EAC233 /* PlistBookmark */;
-			54E241B90E61096700E82FAC /* PBXTextBookmark */ = 54E241B90E61096700E82FAC /* PBXTextBookmark */;
-			54E241BA0E61096700E82FAC /* PBXTextBookmark */ = 54E241BA0E61096700E82FAC /* PBXTextBookmark */;
-			54E241C70E61448000E82FAC /* PBXTextBookmark */ = 54E241C70E61448000E82FAC /* PBXTextBookmark */;
-			54E241C90E61448000E82FAC /* PBXTextBookmark */ = 54E241C90E61448000E82FAC /* PBXTextBookmark */;
-			54E241CF0E61448000E82FAC /* PBXTextBookmark */ = 54E241CF0E61448000E82FAC /* PBXTextBookmark */;
-			54E241D10E61448000E82FAC /* PBXTextBookmark */ = 54E241D10E61448000E82FAC /* PBXTextBookmark */;
+			5409115D0E6F40AC004E371A = 5409115D0E6F40AC004E371A /* PBXTextBookmark */;
+			5409125B0E6F9BF0004E371A = 5409125B0E6F9BF0004E371A /* PBXTextBookmark */;
+			5409125D0E6F9BF0004E371A = 5409125D0E6F9BF0004E371A /* PBXTextBookmark */;
+			541594670E7BAA9000B53EF8 /* PBXBookmark */ = 541594670E7BAA9000B53EF8 /* PBXBookmark */;
+			541594680E7BAA9000B53EF8 /* PBXTextBookmark */ = 541594680E7BAA9000B53EF8 /* PBXTextBookmark */;
+			547626B90E5E81CF00EAC233 = 547626B90E5E81CF00EAC233 /* PlistBookmark */;
+			547626BD0E5E81CF00EAC233 = 547626BD0E5E81CF00EAC233 /* PBXTextBookmark */;
+			547626BE0E5E81CF00EAC233 = 547626BE0E5E81CF00EAC233 /* PlistBookmark */;
+			54E241B90E61096700E82FAC = 54E241B90E61096700E82FAC /* PBXTextBookmark */;
+			54E241BA0E61096700E82FAC = 54E241BA0E61096700E82FAC /* PBXTextBookmark */;
+			54E241C70E61448000E82FAC = 54E241C70E61448000E82FAC /* PBXTextBookmark */;
+			54E241C90E61448000E82FAC = 54E241C90E61448000E82FAC /* PBXTextBookmark */;
+			54E241CF0E61448000E82FAC = 54E241CF0E61448000E82FAC /* PBXTextBookmark */;
+			54E241D10E61448000E82FAC = 54E241D10E61448000E82FAC /* PBXTextBookmark */;
 		};
 		sourceControlManager = 547626950E5E7DEB00EAC233 /* Source Control */;
 		userBuildSettings = {
@@ -195,6 +190,20 @@
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator2.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UISearchBar.h;
 		sourceTree = "<absolute>";
 	};
+	541594670E7BAA9000B53EF8 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 547626A90E5E818700EAC233 /* SpringBridge.m */;
+	};
+	541594680E7BAA9000B53EF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 547626A90E5E818700EAC233 /* SpringBridge.m */;
+		name = "SpringBridge.m: 207";
+		rLen = 0;
+		rLoc = 7251;
+		rType = 0;
+		vrLen = 862;
+		vrLoc = 0;
+	};
 	547626900E5E7DCC00EAC233 /* SpringBridge */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -238,9 +247,9 @@
 	};
 	547626A90E5E818700EAC233 /* SpringBridge.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 3201}}";
-			sepNavSelRange = "{7251, 0}";
-			sepNavVisRange = "{5281, 1438}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 3270}}";
+			sepNavSelRange = "{7270, 0}";
+			sepNavVisRange = "{0, 865}";
 		};
 	};
 	547626B90E5E81CF00EAC233 /* PlistBookmark */ = {
