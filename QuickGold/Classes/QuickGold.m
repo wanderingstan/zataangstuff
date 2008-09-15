@@ -14,12 +14,12 @@
 
 bool Debug_ = true;
 int numMatchesToShow = 8;
-NSArray *allApps;
+NSArray *allApps = nil;
 NSMutableArray *launchieNames;
 NSMutableArray *matches;
 NSMutableDictionary *matchLocations;
 NSMutableDictionary *launchieDetailsByName;
-QuickGold *quickgold;
+QuickGold *quickgold = nil;
 
 @protocol QuickGoldMethods
 // bag of all kinds of interfaces
@@ -40,6 +40,7 @@ QuickGold *quickgold;
 - (void) qk_setGrabbedIcon:(id) icon;
 - (void) qk_uninstallIcon:(id) icon;
 - (void) qk_setIconToInstall:(id) icon;
+- (void) qk__installationComplete:(id) fp8;
 @end
 
 @interface QGTableCell : UITableViewCell { 
@@ -52,6 +53,7 @@ QuickGold *quickgold;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+        /*
         UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(10,10,40,40)];
         [self.contentView addSubview:iv];
         [iv release];
@@ -63,17 +65,7 @@ QuickGold *quickgold;
         label.adjustsFontSizeToFitWidth = YES;
         label.highlightedTextColor = [UIColor whiteColor];
         [self.contentView addSubview:label];
-        [label release];
-        
-        /*
-         UITextField *theTextField = [[UITextField alloc] initWithFrame:rect];
-         theTextField.returnKeyType = UIReturnKeyGo;
-         theTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-         theTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-         theTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-         theTextField.textColor = [UIColor darkGrayColor];
-         [self.contentView addSubview:theTextField];
-         [theTextField release];
+        [label release];        
          */
     }
     return self;
@@ -86,12 +78,13 @@ QuickGold *quickgold;
 
 @end
 
+/*
 static void __sbapplicationcontroller_loadapplications(id<QuickGoldMethods> self, SEL sel, BOOL b) {
     [self qk_loadApplications: b];
     if (allApps) [allApps release];
     allApps = [[self allApplications] retain];
-    [quickgold indexApplications];
 }
+*/
 
 @class SBApplication;
 @class SBUIController;
@@ -101,8 +94,8 @@ static void __sbapplicationcontroller_loadapplications(id<QuickGoldMethods> self
 static void __sbuicontroller_clickedMenuButton(SBUIController* self, SEL sel) { 
     id awayController = [NSClassFromString(@"SBAwayController") sharedAwayController];
     if ([awayController isLocked]) { 
-        [awayController unlockWithSound:YES];
-        // goto done;
+        // [awayController unlockWithSound:YES];
+        goto done;
     }
     
     Class SBUIController = objc_getClass("SBUIController");
@@ -150,21 +143,28 @@ static void __sbiconcontroller_uninstallIcon(SBIconController *self, SEL sel, id
     [self qk_uninstallIcon:icon];
 }
 
+// re-read apps when installation is complete
+static void __sbdownloadcontroller__installationComplete(SBDownloadController *self, SEL sel, id fp8) {
+    [self qk__installationComplete:fp8];
+    NSLog ([NSString stringWithFormat:@"installation complete; quickgold re-indexing"]);
+    [quickgold performSelector:@selector(indexApplications) withObject:nil afterDelay:0.5];
+}
+
 __attribute__((constructor))
 static void QuickGoldInitializer()
 {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     NSLog(@"QuickGold.dylib: The main injection constructor called");
     
-    
     quickgold = nil;
     NSString *appId = [[NSBundle mainBundle] bundleIdentifier];
     if ([appId hasSuffix: @"springboard"]) { 
         QuickGoldRename(YES, "SBUIController", "clickedMenuButton", (IMP)&__sbuicontroller_clickedMenuButton);
-        QuickGoldRename(YES, "SBApplicationController", "loadApplications:", (IMP)&__sbapplicationcontroller_loadapplications);
+        // QuickGoldRename(YES, "SBApplicationController", "loadApplications:", (IMP)&__sbapplicationcontroller_loadapplications);
         QuickGoldRename(YES, "SBIconController", "setGrabbedIcon:", (IMP)&__sbiconcontroller_setGrabbedIcon);
         QuickGoldRename(YES, "SBIconController", "setIconToInstall:", (IMP)&__sbiconcontroller_setIconToInstall);
         QuickGoldRename(YES, "SBIconController", "uninstallIcon:", (IMP)&__sbiconcontroller_uninstallIcon);
+        QuickGoldRename(YES, "SBDownloadController", "_installationComplete:", (IMP)&__sbdownloadcontroller__installationComplete);
         
         quickgold = [[QuickGold alloc] init];
         [quickgold performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
@@ -196,7 +196,6 @@ NSInteger appSort(id num1, id num2, void *context) {
     [browserWindow setMultipleTouchEnabled: YES];
     [browserWindow setWindowLevel: 1];
     // [browserWindow setAlpha: 0.01];
-    [browserWindow setHidden: NO];
     // [browserWindow setBackgroundColor: [UIColor colorWithWhite: 0 alpha: 0.7]];
     
     searchBarAndTableView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 200)];
@@ -216,8 +215,10 @@ NSInteger appSort(id num1, id num2, void *context) {
     matchTable = [[[UITableView alloc] initWithFrame:CGRectMake(0, 50, 320, 200) style:UITableViewStylePlain] autorelease];
     matchTable.dataSource = self;
     matchTable.delegate = self;
+    // matchTable.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.95];
     [searchBarAndTableView addSubview:matchTable];
     [browserWindow addSubview:searchBarAndTableView];
+    [browserWindow setHidden: NO];
     
     [self performSelector: @selector(hideBrowser) withObject: nil afterDelay: 0.1];
     
@@ -226,12 +227,16 @@ NSInteger appSort(id num1, id num2, void *context) {
     matchLocations = [[NSMutableDictionary dictionary] retain];
     launchieDetailsByName = [[NSMutableDictionary dictionary] retain];
     
-    [self indexApplications];
+    [self performSelector: @selector(indexApplications) withObject:nil afterDelay:0.5];
     [self indexAddressBookEntries];
     [self indexAllWebClips];
 }
 
 - (void) indexApplications {
+    Class SBApplicationController = objc_getClass("SBApplicationController");
+    id controller = [SBApplicationController sharedInstance];
+    allApps = [controller allApplications];
+
     if (allApps) { 
         NSLog(@"loading springboard apps");
         for (id<QuickGoldMethods> app in allApps) {
@@ -520,13 +525,15 @@ NSInteger sortMatchesByLocation (id name1, id name2, void *context) {
     
     int i = indexPath.row;
     int numMatches = [matches count];
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    // UILabel *label = (UILabel *)[cell viewWithTag:1];
     
     if (i >= numMatches) { 
-        label.text = @"";
+        // label.text = @"";
+        cell.text = @"";
         cell.accessoryType = UITableViewCellAccessoryNone;
     } else {
-        label.text = [matches objectAtIndex: i];
+        // label.text = [matches objectAtIndex: i];
+        cell.text = [matches objectAtIndex: i];
         // cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
@@ -575,7 +582,7 @@ void UIKeyboardDisableAutomaticAppearance(void);
 
 - (void) hideBrowser {
     [UIView beginAnimations: nil context: nil];
-    [UIView setAnimationDuration: 0.3];
+    [UIView setAnimationDuration: 0.5];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     searchBar.transform = CGAffineTransformMakeTranslation(0,-100);
     [matchTable setAlpha:0];
