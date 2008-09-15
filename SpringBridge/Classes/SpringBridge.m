@@ -80,11 +80,11 @@ static void SpringBridge_uiapplication_specialLaunchApp(id self, SEL sel, NSStri
 }
 
 /*
-static void SpringBridge_statusbar_mouseDown(id self, SEL sel, struct __GSEvent *x) {
-    NSLog ([NSString stringWithFormat:@"mouse down!"]);
-    [self lh_mouseDown:x];
-}
-*/
+ static void SpringBridge_statusbar_mouseDown(id self, SEL sel, struct __GSEvent *x) {
+ NSLog ([NSString stringWithFormat:@"mouse down!"]);
+ [self lh_mouseDown:x];
+ }
+ */
 
 @class SBApplication;
 @class SBUIController;
@@ -131,17 +131,31 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
     if ([d length] == BUFSIZE) {
         char *buf = (char *) [d bytes];
         NSString *str = [NSString stringWithFormat:@"%s", buf];
-
+        
         Class SBUIController = objc_getClass("SBUIController");
         id uiController = [SBUIController sharedInstance];
         [uiController quitTopApplication];
-
+        
         Class SBApplicationController = objc_getClass("SBApplicationController");
         id appController = [SBApplicationController sharedInstance];
-        NSArray *apps = [appController applicationsWithBundleIdentifier:str];
-        if ([apps count] > 0) { 
-            [sbridge performSelector:@selector(launchTheApp:) withObject:[apps objectAtIndex:0] afterDelay: 0.1];
-        } 
+        if ([str isEqualToString:@"com.apple.mobileslideshow-Camera"] || [str isEqualToString:@"com.apple.mobileslideshow-Photos"]) {
+            NSString *theRole = @"Camera";
+            if ([str isEqualToString:@"com.apple.mobileslideshow-Photos"]) { 
+                theRole = @"Photos";
+                for (id app in [appController allApplications]) {
+                    NSString* role = [app roleIdentifier];
+                    if ([role isEqualToString:theRole]) {
+                        [sbridge performSelector:@selector(launchTheApp:) withObject:app afterDelay: 0.1];
+                        break;
+                    }
+                }
+            }
+        } else {
+            NSArray *apps = [appController applicationsWithBundleIdentifier:str];
+            if ([apps count] > 0) { 
+                [sbridge performSelector:@selector(launchTheApp:) withObject:[apps objectAtIndex:0] afterDelay: 0.1];
+            } 
+        }
     }
 }
 
@@ -164,14 +178,14 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
     addr4.sin_port = htons(SPRING_BRIDGE_PORT);
     addr4.sin_addr.s_addr = inet_addr("127.0.0.1");
     NSData *address4 = [NSData dataWithBytes:&addr4 length:sizeof(addr4)];
-
+    
     CFSocketError err;
     if ((err = CFSocketSetAddress(sock, (CFDataRef)address4)) != kCFSocketSuccess) {
         NSLog(@"SpringBridge: Failed to bind socket to port: error=%@", strerror(errno));
         CFRelease(sock);
         return;
     }
-
+    
     CFRunLoopRef cfrl = CFRunLoopGetCurrent();
     CFRunLoopSourceRef source4 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, sock, 0);
     CFRunLoopAddSource(cfrl, source4, kCFRunLoopCommonModes);
