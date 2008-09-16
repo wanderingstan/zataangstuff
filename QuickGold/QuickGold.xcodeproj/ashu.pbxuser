@@ -1,17 +1,29 @@
 // !$*UTF8*$!
 {
 	1D3623240D0F684500981E51 /* QuickGoldAppDelegate.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = QuickGoldAppDelegate.h;
+		path = /Users/ashu/Documents/Applications/svn/zataangstuff/QuickGold/Classes/QuickGoldAppDelegate.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 467}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 357}";
+			sepNavVisRange = "{0, 261}";
 		};
 	};
 	1D3623250D0F684500981E51 /* QuickGoldAppDelegate.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = QuickGoldAppDelegate.m;
+		path = /Users/ashu/Documents/Applications/svn/zataangstuff/QuickGold/Classes/QuickGoldAppDelegate.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
-			sepNavSelRange = "{368, 0}";
-			sepNavVisRange = "{0, 464}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 467}}";
+			sepNavSelRange = "{367, 0}";
+			sepNavVisRange = "{0, 367}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* QuickGold */ = {
@@ -23,7 +35,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 547626900E5E7DCC00EAC233 /* QuickGold */;
-		activeSDKPreference = iphoneos2.0;
+		activeSDKPreference = iphonesimulator2.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* QuickGold */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* QuickGold */,
@@ -53,7 +65,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					600,
-					496,
+					496.20849609375,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -109,8 +121,8 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 243144288;
-			PBXWorkspaceStateSaveDate = 243144288;
+			PBXPerProjectTemplateStateSaveDate = 243230875;
+			PBXWorkspaceStateSaveDate = 243230875;
 		};
 		perUserProjectItems = {
 			5409115B0E6F40AC004E371A = 5409115B0E6F40AC004E371A /* PBXTextBookmark */;
@@ -121,15 +133,12 @@
 			5410DD1D0E5E8D5800DFD041 = 5410DD1D0E5E8D5800DFD041 /* PBXTextBookmark */;
 			5410DD220E5E8D5800DFD041 = 5410DD220E5E8D5800DFD041 /* PBXTextBookmark */;
 			5410DD2A0E5E8D5800DFD041 = 5410DD2A0E5E8D5800DFD041 /* PBXTextBookmark */;
-			5415948A0E7C2BB600B53EF8 = 5415948A0E7C2BB600B53EF8 /* PBXTextBookmark */;
 			541BA7440E7712840029FC12 = 541BA7440E7712840029FC12 /* PBXTextBookmark */;
 			541BA7460E7712840029FC12 = 541BA7460E7712840029FC12 /* PBXTextBookmark */;
-			541BA7470E7712840029FC12 = 541BA7470E7712840029FC12 /* PBXTextBookmark */;
+			545AE3590E7F68A6007B77C8 /* PBXTextBookmark */ = 545AE3590E7F68A6007B77C8 /* PBXTextBookmark */;
 			546393AE0E7597F800FC3E1C = 546393AE0E7597F800FC3E1C /* PBXTextBookmark */;
-			54711E7F0E7E166200516251 /* PBXTextBookmark */ = 54711E7F0E7E166200516251 /* PBXTextBookmark */;
-			54711E830E7E16E600516251 /* PBXTextBookmark */ = 54711E830E7E16E600516251 /* PBXTextBookmark */;
-			54711E840E7E16E600516251 /* PBXTextBookmark */ = 54711E840E7E16E600516251 /* PBXTextBookmark */;
-			54711E9D0E7E23E500516251 /* PBXTextBookmark */ = 54711E9D0E7E23E500516251 /* PBXTextBookmark */;
+			54711E830E7E16E600516251 = 54711E830E7E16E600516251 /* PBXTextBookmark */;
+			54711F660E7E39F400516251 = 54711F660E7E39F400516251 /* PBXTextBookmark */;
 			547626B90E5E81CF00EAC233 = 547626B90E5E81CF00EAC233 /* PlistBookmark */;
 			547626BC0E5E81CF00EAC233 = 547626BC0E5E81CF00EAC233 /* PBXTextBookmark */;
 			547626BD0E5E81CF00EAC233 = 547626BD0E5E81CF00EAC233 /* PBXTextBookmark */;
@@ -146,10 +155,16 @@
 		};
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = main.m;
+		path = /Users/ashu/Documents/Applications/svn/zataangstuff/QuickGold/main.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 538}}";
-			sepNavSelRange = "{350, 0}";
-			sepNavVisRange = "{0, 350}";
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 467}}";
+			sepNavSelRange = "{252, 0}";
+			sepNavVisRange = "{0, 252}";
 		};
 	};
 	32CA4F630368D1EE00C91783 /* QuickGold_Prefix.pch */ = {
@@ -171,9 +186,9 @@
 		fRef = 1D3623250D0F684500981E51 /* QuickGoldAppDelegate.m */;
 		name = "QuickGoldAppDelegate.m: 18";
 		rLen = 0;
-		rLoc = 368;
+		rLoc = 367;
 		rType = 0;
-		vrLen = 464;
+		vrLen = 367;
 		vrLoc = 0;
 	};
 	5409115C0E6F40AC004E371A /* PBXTextBookmark */ = {
@@ -183,7 +198,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 357;
+		vrLen = 261;
 		vrLoc = 0;
 	};
 	5409115D0E6F40AC004E371A /* PBXTextBookmark */ = {
@@ -191,9 +206,9 @@
 		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 350;
+		rLoc = 252;
 		rType = 0;
-		vrLen = 350;
+		vrLen = 252;
 		vrLoc = 0;
 	};
 	5409125B0E6F9BF0004E371A /* PBXTextBookmark */ = {
@@ -247,7 +262,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 357;
+		vrLen = 261;
 		vrLoc = 0;
 	};
 	5410DD2A0E5E8D5800DFD041 /* PBXTextBookmark */ = {
@@ -260,27 +275,12 @@
 		vrLen = 177;
 		vrLoc = 0;
 	};
-	5415948A0E7C2BB600B53EF8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5415948B0E7C2BB600B53EF8 /* QuickGold.m */;
-		name = "QuickGold.m: 685";
-		rLen = 0;
-		rLoc = 24358;
-		rType = 0;
-		vrLen = 1767;
-		vrLoc = 11779;
-	};
 	5415948B0E7C2BB600B53EF8 /* QuickGold.m */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.objc;
 		name = QuickGold.m;
 		path = /Users/ashu/Documents/Applications/QuickGold/Classes/QuickGold.m;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 10125}}";
-			sepNavSelRange = "{24531, 0}";
-			sepNavVisRange = "{5001, 1445}";
-		};
 	};
 	541BA7440E7712840029FC12 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -302,22 +302,15 @@
 		vrLen = 548;
 		vrLoc = 0;
 	};
-	541BA7470E7712840029FC12 /* PBXTextBookmark */ = {
+	545AE3590E7F68A6007B77C8 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 541BA7480E7712840029FC12 /* QuickGold.m */;
-		name = "QuickGold.m: 682";
+		fRef = 54711F670E7E39F400516251 /* QuickGold.m */;
+		name = "QuickGold.m: 689";
 		rLen = 0;
-		rLoc = 24114;
+		rLoc = 24528;
 		rType = 0;
-		vrLen = 779;
-		vrLoc = 0;
-	};
-	541BA7480E7712840029FC12 /* QuickGold.m */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = QuickGold.m;
-		path = /Users/ashu/Documents/Applications/QuickGold/Classes/QuickGold.m;
-		sourceTree = "<absolute>";
+		vrLen = 1393;
+		vrLoc = 5001;
 	};
 	546393AE0E7597F800FC3E1C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -329,16 +322,6 @@
 		vrLen = 869;
 		vrLoc = 0;
 	};
-	54711E7F0E7E166200516251 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5415948B0E7C2BB600B53EF8 /* QuickGold.m */;
-		name = "QuickGold.m: 685";
-		rLen = 0;
-		rLoc = 24358;
-		rType = 0;
-		vrLen = 1734;
-		vrLoc = 11779;
-	};
 	54711E830E7E16E600516251 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5415948B0E7C2BB600B53EF8 /* QuickGold.m */;
@@ -349,25 +332,27 @@
 		vrLen = 1734;
 		vrLoc = 11779;
 	};
-	54711E840E7E16E600516251 /* PBXTextBookmark */ = {
+	54711F660E7E39F400516251 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5415948B0E7C2BB600B53EF8 /* QuickGold.m */;
-		name = "QuickGold.m: 526";
-		rLen = 0;
-		rLoc = 18805;
-		rType = 0;
-		vrLen = 1495;
-		vrLoc = 17727;
-	};
-	54711E9D0E7E23E500516251 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5415948B0E7C2BB600B53EF8 /* QuickGold.m */;
+		fRef = 54711F670E7E39F400516251 /* QuickGold.m */;
 		name = "QuickGold.m: 689";
 		rLen = 0;
-		rLoc = 24531;
+		rLoc = 24528;
 		rType = 0;
 		vrLen = 1445;
 		vrLoc = 5001;
+	};
+	54711F670E7E39F400516251 /* QuickGold.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = QuickGold.m;
+		path = /Users/ashu/Documents/Applications/QuickGold/Classes/QuickGold.m;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1084, 10389}}";
+			sepNavSelRange = "{8603, 0}";
+			sepNavVisRange = "{7614, 1293}";
+		};
 	};
 	547626900E5E7DCC00EAC233 /* QuickGold */ = {
 		isa = PBXExecutable;
@@ -436,7 +421,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 457;
+		vrLen = 367;
 		vrLoc = 0;
 	};
 	547626BD0E5E81CF00EAC233 /* PBXTextBookmark */ = {
@@ -444,9 +429,9 @@
 		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 350;
+		rLoc = 252;
 		rType = 0;
-		vrLen = 350;
+		vrLen = 252;
 		vrLoc = 0;
 	};
 	547626BE0E5E81CF00EAC233 /* PlistBookmark */ = {

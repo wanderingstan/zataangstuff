@@ -325,7 +325,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>54711E9D0E7E23E500516251</string>
+										<string>545AE3590E7F68A6007B77C8</string>
 										<key>history</key>
 										<array>
 											<string>547626B90E5E81CF00EAC233</string>
@@ -339,7 +339,7 @@
 											<string>5409125D0E6F9BF0004E371A</string>
 											<string>546393AE0E7597F800FC3E1C</string>
 											<string>541BA7440E7712840029FC12</string>
-											<string>54711E830E7E16E600516251</string>
+											<string>54711F660E7E39F400516251</string>
 										</array>
 										<key>nextStack</key>
 										<array>
@@ -415,9 +415,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>54711E800E7E166200516251</string>
+				<string>545AE35A0E7F68A6007B77C8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>54711E810E7E166200516251</string>
+				<string>545AE35B0E7F68A6007B77C8</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -551,8 +551,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>5410DD310E5E8D5800DFD041</string>
 		<string>/Users/ashu/Documents/Applications/svn/zataangstuff/QuickGold/QuickGold.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

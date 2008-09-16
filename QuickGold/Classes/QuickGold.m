@@ -195,14 +195,15 @@ NSInteger appSort(id num1, id num2, void *context) {
     [browserWindow setUserInteractionEnabled: YES];
     [browserWindow setMultipleTouchEnabled: YES];
     [browserWindow setWindowLevel: 1];
-    // [browserWindow setAlpha: 0.01];
-    // [browserWindow setBackgroundColor: [UIColor colorWithWhite: 0 alpha: 0.7]];
+    [browserWindow setAlpha: 0.01];
+    [browserWindow setBackgroundColor: [UIColor colorWithWhite: 0 alpha: 0.7]];
     
     searchBarAndTableView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 200)];
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     searchBar.placeholder = @"apps, contacts, phone#s, websites";
+    searchBar.barStyle = UIBarStyleBlackOpaque;
     searchField = [(NSArray *)[searchBar subviews] objectAtIndex:0];
     searchField.returnKeyType = UIReturnKeyGo;
     searchField.enablesReturnKeyAutomatically = NO;
