@@ -6,32 +6,41 @@
 - (IBAction)enableVibrus:(id)sender
 {
 	UISwitch *sw = sender;
+	NSMutableDictionary *prefsDict = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
 	switch ([sender tag]) {
 		case 0: {
-			if (sw.on) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"vibrusEnabled"];
-			else [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"vibrusEnabled"];
+			if (sw.on) [prefsDict setObject:@"1" forKey:@"vibrusEnabled"];
+			else [prefsDict setObject:@"0" forKey:@"vibrusEnabled"];
 		} break;
 		case 1: {
-			if (sw.on) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kbEnabled"];
-			else [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"kbEnabled"];
+			if (sw.on) [prefsDict setObject:@"1" forKey:@"kbEnabled"];
+			else [prefsDict setObject:@"0" forKey:@"kbEnabled"];
 		} break;
 		case 2: {
-			if (sw.on) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"dialPadEnabled"];
-			else [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"dialPadEnabled"];
+			if (sw.on) [prefsDict setObject:@"1" forKey:@"dialPadEnabled"];
+			else [prefsDict setObject:@"0" forKey:@"dialPadEnabled"];
 		} break;
 		default: break;
 	}
+	[prefsDict writeToFile:@"/var/mobile/Library/Preferences/vibrus.plist" atomically:YES];
+	[prefsDict release];
 }
 - (IBAction)setIntensity:(id)sender 
 {
 	UISlider *slider = sender;
-	[[NSUserDefaults standardUserDefaults] setInteger:lround(slider.value) forKey:@"intensity"];
+	NSMutableDictionary *prefsDict = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
+	[prefsDict setObject:[NSString stringWithFormat:@"%i", lround(slider.value)] forKey:@"intensity"];
+	[prefsDict writeToFile:@"/var/mobile/Library/Preferences/vibrus.plist" atomically:YES];
+	[prefsDict release];
 }
 - (IBAction)setDuration:(id)sender 
 {
 	UISlider *dslider = sender;
+	NSMutableDictionary *prefsDict = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
 	durationLabel.text = [NSString stringWithFormat:@"%dms", lround(dslider.value)];
-	[[NSUserDefaults standardUserDefaults] setInteger:(lround(dslider.value)*1000) forKey:@"duration"];
+	[prefsDict setObject:[NSString stringWithFormat:@"%i", lround(dslider.value)*1000] forKey:@"duration"];
+	[prefsDict writeToFile:@"/var/mobile/Library/Preferences/vibrus.plist" atomically:YES];
+	[prefsDict release];
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -101,23 +110,39 @@
 	}
 	return 0;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath
+{
 	return;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
 	return 44;
 }
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
+	NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
+	BOOL vibrusEnabled = [[prefs objectForKey:@"vibrusEnabled"] integerValue];
+	BOOL kbEnabled = [[prefs objectForKey:@"kbEnabled"] integerValue];
+	BOOL dialPadEnabled = [[prefs objectForKey:@"dialPadEnabled"] integerValue];
+	int intensity = [[prefs objectForKey:@"intensity"] integerValue];
+	int duration = [[prefs objectForKey:@"duration"] integerValue] / 1000;
+	
+	vibrusSwitch.on = vibrusEnabled;
+	kbSwitch.on = kbEnabled;
+	dialPadSwitch.on = dialPadEnabled;
+	
+	intensitySlider.value = intensity;
+	durationSlider.value = duration;
+	durationLabel.text = [NSString stringWithFormat:@"%dms", duration];
+	
     [super viewWillAppear:animated];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
+
+
+//- (void)viewDidAppear:(BOOL)animated {	
+//    [super viewDidAppear:animated];
+//}
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 }
@@ -126,19 +151,16 @@
 - (void)viewDidDisappear:(BOOL)animated {
 }
 */
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
-
-
 - (void)dealloc {
     [super dealloc];
 }
