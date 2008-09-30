@@ -47,27 +47,43 @@ HapticKeyboard *haptic;
 
 @protocol RenamedMethods 
 - (void) hk_addInputString:(id) string;
-- (void) hk_setInputString:(id) string;
-- (BOOL) hk_acceptInputString:(id) string;
+- (void) hk_deleteFromInput;
+- (void) hk_phonePad:(id)fp8 appendString:(id)fp12;
+- (void) hk_phonePadDeleteLastDigit:(id) fp8;
 @end 
 
+static void start_vib () {
+    int intensity = 2;
+    _CTServerConnectionSetVibratorState(&x, connection, 3, intensity, 1000.0, 1000.0, 1000.0);
+}
+
+static void stop_vib () {
+    usleep(50000);
+    _CTServerConnectionSetVibratorState(&x, connection, 0, 0, 0, 0, 0);
+}
+
 static void __haptic_uikeyboardimpl_addInputString (id<RenamedMethods> self, SEL sel, id string) {
-    // [[UIApplication sharedApplication] vibrateForDuration:1000];
-    // AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    start_vib ();
     [self hk_addInputString:string];
-    int intensity = 1;
-    [haptic performSelector:@selector(shutoff) withObject:nil afterDelay:0.1];
-    _CTServerConnectionSetVibratorState(&x, connection, 3, intensity, 1, 1, 1);
+    stop_vib ();
 }
 
-static void __haptic_uikeyboardimpl_setInputString (id<RenamedMethods> self, SEL sel, id string) {
-    // NSLog ([NSString stringWithFormat:@"setInputString called [%@]", string]);
-    [self hk_setInputString:string];
+static void __haptic_uikeyboardimpl_deleteFromInput (id<RenamedMethods> self, SEL sel) {
+    start_vib ();
+    [self hk_deleteFromInput];
+    stop_vib ();
 }
 
-static bool __haptic_uikeyboardimpl_acceptInputString (id<RenamedMethods> self, SEL sel, id string) {
-    // NSLog ([NSString stringWithFormat:@"acceptInputString here [%@]", string]);
-    return [self hk_acceptInputString:string];
+static void __haptic_dialercontroller_phonePad_appendString (id<RenamedMethods> self, SEL sel, id fp8, id fp12) {
+    start_vib ();
+    [self hk_phonePad:fp8 appendString:fp12];
+    stop_vib ();
+}
+
+static void __haptic_dialercontroller_phonePadDeleteLastDigit (id<RenamedMethods> self, SEL sel, id fp8) {
+    start_vib ();
+    [self hk_phonePadDeleteLastDigit:fp8];
+    stop_vib ();
 }
 
 @class SBApplication;
@@ -84,9 +100,13 @@ static void HapticKeyboardInitializer()
     haptic = [[HapticKeyboard alloc] init];
     [haptic performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
     MyRename(YES, "UIKeyboardImpl", @selector(addInputString:), (IMP)&__haptic_uikeyboardimpl_addInputString);
-    // MyRename(YES, "UIKeyboardImpl", @selector(setInputString:), (IMP)&__haptic_uikeyboardimpl_setInputString);
-    // MyRename(YES, "UIKeyboardImpl", @selector(acceptInputString:), (IMP)&__haptic_uikeyboardimpl_acceptInputString);
-        
+    MyRename(YES, "UIKeyboardImpl", @selector(deleteFromInput), (IMP)&__haptic_uikeyboardimpl_deleteFromInput);
+
+    if ([appId isEqual:@"com.apple.mobilephone"]) { 
+        MyRename(YES, "DialerController", @selector(phonePad:appendString:), (IMP)&__haptic_dialercontroller_phonePad_appendString);
+        MyRename(YES, "DialerController", @selector(phonePadDeleteLastDigit:), (IMP)&__haptic_dialercontroller_phonePadDeleteLastDigit);
+    }
+
     [pool release]; 
 }
 
@@ -97,13 +117,21 @@ static void HapticKeyboardInitializer()
 }
 
 int vibratecallback(void *connection, CFStringRef string, CFDictionaryRef dictionary, void *data) {
+    NSLog ([NSString stringWithFormat:@"vibrate callback: string:%@ dictionary:%@", string, dictionary]);
     return 0;
+}
+
+/*
+- (void) setShutoffTimer { 
+    NSLog ([NSString stringWithFormat:@"setShutoffTimer called!"]);
+    [self performSelector: @selector(shutoff) withObject: nil afterDelay: 0.1];
 }
 
 - (void) shutoff { 
     NSLog ([NSString stringWithFormat:@"shutoff called!"]);
     _CTServerConnectionSetVibratorState(&x, connection, 0, 0, 0, 0, 0);
 }
+*/
 
 - (void) inject {
     NSLog(@"HapticKeyboard initializing");
