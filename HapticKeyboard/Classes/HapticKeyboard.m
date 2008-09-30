@@ -54,10 +54,10 @@ HapticKeyboard *haptic;
 
 static void start_vib () {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
-    int intensity = [[prefs objectForKey:@"intensity"] integerValue];
+    int intensity = (prefs ? [[prefs objectForKey:@"intensity"] integerValue] : 2);
 //      NSLog(@"INTENSITY: %i", intensity);
 //      int intensity = 10;
-    if ([[prefs objectForKey:@"vibrusEnabled"] integerValue])
+    if (!prefs || [[prefs objectForKey:@"vibrusEnabled"] integerValue])
         _CTServerConnectionSetVibratorState(&x, connection, 3, intensity, 0, 0, 0);
 }
 
@@ -65,16 +65,24 @@ static void stop_vib () {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
     int duration = [[prefs objectForKey:@"duration"] integerValue];
 //      NSLog(@"DURATION: %i", duration);
-    if ([[prefs objectForKey:@"vibrusEnabled"] integerValue])
+    if (!prefs || [[prefs objectForKey:@"vibrusEnabled"] integerValue])
     {
         usleep(duration);
         _CTServerConnectionSetVibratorState(&x, connection, 0, 0, 0, 0, 0);
     }
 }
 
+bool pwn_low_level_stuff = FALSE;
+
 static void __haptic_uikeyboardimpl_addInputString (id<RenamedMethods> self, SEL sel, id string) {
+    if (pwn_low_level_stuff) { 
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        [self hk_addInputString:string];
+        return;
+    }
+
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
-    BOOL kbEnabled = [[prefs objectForKey:@"kbEnabled"] integerValue];
+    BOOL kbEnabled = (prefs ? [[prefs objectForKey:@"kbEnabled"] integerValue] : YES);
     if (kbEnabled)
         start_vib ();
     [self hk_addInputString:string];
@@ -84,7 +92,7 @@ static void __haptic_uikeyboardimpl_addInputString (id<RenamedMethods> self, SEL
 
 static void __haptic_uikeyboardimpl_deleteFromInput (id<RenamedMethods> self, SEL sel) {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
-    BOOL kbEnabled = [[prefs objectForKey:@"kbEnabled"] integerValue];
+    BOOL kbEnabled = (prefs ? [[prefs objectForKey:@"kbEnabled"] integerValue] : YES);
     if (kbEnabled)
         start_vib ();
     [self hk_deleteFromInput];
@@ -94,7 +102,7 @@ static void __haptic_uikeyboardimpl_deleteFromInput (id<RenamedMethods> self, SE
 
 static void __haptic_dialercontroller_phonePad_appendString (id<RenamedMethods> self, SEL sel, id fp8, id fp12) {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
-    BOOL dialPadEnabled = [[prefs objectForKey:@"dialPadEnabled"] integerValue];
+    BOOL dialPadEnabled = (prefs ? [[prefs objectForKey:@"dialPadEnabled"] integerValue] : YES);
     if (dialPadEnabled)
         start_vib ();
     [self hk_phonePad:fp8 appendString:fp12];
@@ -104,7 +112,7 @@ static void __haptic_dialercontroller_phonePad_appendString (id<RenamedMethods> 
 
 static void __haptic_dialercontroller_phonePadDeleteLastDigit (id<RenamedMethods> self, SEL sel, id fp8) {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
-    BOOL dialPadEnabled = [[prefs objectForKey:@"dialPadEnabled"] integerValue];
+    BOOL dialPadEnabled = (prefs ? [[prefs objectForKey:@"dialPadEnabled"] integerValue] : YES);
     if (dialPadEnabled)
         start_vib ();
     [self hk_phonePadDeleteLastDigit:fp8];
@@ -114,6 +122,23 @@ static void __haptic_dialercontroller_phonePadDeleteLastDigit (id<RenamedMethods
 
 @class SBApplication;
 @class SBUIController;
+
+/*
+MSHook(int, _CTServerConnectionSetVibratorState,
+           int *x,
+           void *connection,
+           int first,
+           int second,
+           float f_one,
+           float f_two,
+           float f_three) 
+{
+    NSLog ([NSString stringWithFormat:@"first=%d second=%d f_one=%f f_two=%f f_three=%f", first, second, f_one, f_two, f_three]);
+    int v = __CTServerConnectionSetVibratorState(x, connection, first, second, f_one, f_two, f_three);
+    NSLog ([NSString stringWithFormat:@"after call: x=%d", x]);
+    return v;
+}
+*/
 
 __attribute__((constructor))
 static void HapticKeyboardInitializer()
@@ -127,6 +152,12 @@ static void HapticKeyboardInitializer()
     [haptic performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
     MyRename(YES, "UIKeyboardImpl", @selector(addInputString:), (IMP)&__haptic_uikeyboardimpl_addInputString);
     MyRename(YES, "UIKeyboardImpl", @selector(deleteFromInput), (IMP)&__haptic_uikeyboardimpl_deleteFromInput);
+
+    /*
+    if (pwn_low_level_stuff) { 
+        MSHookFunction(&_CTServerConnectionSetVibratorState, &$_CTServerConnectionSetVibratorState, &__CTServerConnectionSetVibratorState);
+    }
+*/
 
     if ([appId isEqual:@"com.apple.mobilephone"]) { 
         MyRename(YES, "DialerController", @selector(phonePad:appendString:), (IMP)&__haptic_dialercontroller_phonePad_appendString);

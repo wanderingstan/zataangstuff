@@ -18,7 +18,6 @@ else
 CFLAGS += -x objective-c -arch armv6 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks \
 	  -O0 -Wreturn-type -Wunused-variable -fmessage-length=0 -fvisibility=hidden \
 	  -gdwarf-2 -mthumb \
-          -I/Users/ashu/Documents/Applications/substrate \
 	  -isysroot /Developer/Platforms/iPhone$(PLAT).platform/Developer/SDKs/iPhone$(PLAT)$(VERSION).sdk
 endif
 
