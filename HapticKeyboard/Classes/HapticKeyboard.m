@@ -13,6 +13,13 @@
 #import "HapticKeyboard.h"
 #define RenamePrefix "hk_"
 
+// OPTIONS
+bool vibrusEnabled;
+bool dialPadEnabled;
+bool kbEnabled;
+int intensity;
+int duration;
+
 extern void * _CTServerConnectionCreate(CFAllocatorRef, int (*)(void *, CFStringRef, CFDictionaryRef, void *), int *);
 extern int _CTServerConnectionSetVibratorState(int *, void *, int, int, float, float, float);
 
@@ -53,12 +60,11 @@ HapticKeyboard *haptic;
 @end 
 
 static void start_vib () {
-    int intensity = 2;
     _CTServerConnectionSetVibratorState(&x, connection, 3, intensity, 1000.0, 1000.0, 1000.0);
 }
 
 static void stop_vib () {
-    usleep(50000);
+    usleep(duration);
     _CTServerConnectionSetVibratorState(&x, connection, 0, 0, 0, 0, 0);
 }
 
@@ -95,14 +101,35 @@ static void HapticKeyboardInitializer()
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     
     haptic = nil;
+
+    vibrusEnabled = YES;
+    dialPadEnabled = YES;
+    kbEnabled = YES;
+    intensity = 2;
+    duration = 50000;
+
+    NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
+    if (prefs) { 
+        vibrusEnabled = [[prefs objectForKey:@"vibrusEnabled"] integerValue];
+        kbEnabled = [[prefs objectForKey:@"kbEnabled"] integerValue];
+        dialPadEnabled = [[prefs objectForKey:@"dialPadEnabled"] integerValue];
+        duration = [[prefs objectForKey:@"duration"] integerValue];
+        intensity = [[prefs objectForKey:@"intensity"] integerValue];
+    }
+
+    if (!vibrusEnabled)
+        return;
     
     NSString *appId = [[NSBundle mainBundle] bundleIdentifier];
     haptic = [[HapticKeyboard alloc] init];
     [haptic performSelectorOnMainThread: @selector(didInjectIntoProgram) withObject: nil waitUntilDone: NO];
-    MyRename(YES, "UIKeyboardImpl", @selector(addInputString:), (IMP)&__haptic_uikeyboardimpl_addInputString);
-    MyRename(YES, "UIKeyboardImpl", @selector(deleteFromInput), (IMP)&__haptic_uikeyboardimpl_deleteFromInput);
 
-    if ([appId isEqual:@"com.apple.mobilephone"]) { 
+    if (kbEnabled) {
+        MyRename(YES, "UIKeyboardImpl", @selector(addInputString:), (IMP)&__haptic_uikeyboardimpl_addInputString);
+        MyRename(YES, "UIKeyboardImpl", @selector(deleteFromInput), (IMP)&__haptic_uikeyboardimpl_deleteFromInput);
+    }
+
+    if (dialPadEnabled && [appId isEqual:@"com.apple.mobilephone"]) { 
         MyRename(YES, "DialerController", @selector(phonePad:appendString:), (IMP)&__haptic_dialercontroller_phonePad_appendString);
         MyRename(YES, "DialerController", @selector(phonePadDeleteLastDigit:), (IMP)&__haptic_dialercontroller_phonePadDeleteLastDigit);
     }
