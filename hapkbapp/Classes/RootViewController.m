@@ -120,7 +120,22 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
+	NSDictionary *prefs;
+	if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/Library/Preferences/vibrus.plist"])
+	{
+		prefs = [NSMutableDictionary dictionary];
+		[prefs setValue:@"1" forKey:@"vibrusEnabled"];
+		[prefs setValue:@"1" forKey:@"kbEnabled"];
+		[prefs setValue:@"1" forKey:@"dialPadEnabled"];
+		[prefs setValue:@"2" forKey:@"intensity"];
+		[prefs setValue:@"45000" forKey:@"duration"];
+		[prefs writeToFile:@"/var/mobile/Library/Preferences/vibrus.plist" atomically:YES];
+	}
+	else
+	{
+		prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/vibrus.plist"];
+	}
+	
 	BOOL vibrusEnabled = [[prefs objectForKey:@"vibrusEnabled"] integerValue];
 	BOOL kbEnabled = [[prefs objectForKey:@"kbEnabled"] integerValue];
 	BOOL dialPadEnabled = [[prefs objectForKey:@"dialPadEnabled"] integerValue];
