@@ -1,5 +1,6 @@
 #import "RootViewController.h"
 #import "VibrusAppDelegate.h"
+#import "admob/ViewController.h"
 
 @implementation RootViewController
 
@@ -25,6 +26,7 @@
 	[prefsDict writeToFile:@"/var/mobile/Library/Preferences/vibrus.plist" atomically:YES];
 	[prefsDict release];
 }
+
 - (IBAction)setIntensity:(id)sender 
 {
 	UISlider *slider = sender;
@@ -46,9 +48,10 @@
 {
 	switch (section)
 	{
-		case 0: return @"General"; break;
-		case 1: return @"Modules"; break;
-		case 2: return @"Preferences"; break;
+        case 0: return nil; break;
+		case 1: return @"General"; break;
+		case 2: return @"Modules"; break;
+		case 3: return @"Preferences"; break;
 		default: return nil; break;
 	}
 	return nil;
@@ -57,31 +60,51 @@
 {
 	switch (section)
 	{
-		case 2: return @"Vibrus v1.0 by zataang and francis"; break;
+		case 3: return @"Vibrus v1.0 by zataang and francis"; break;
 		default: return nil; break;
 	}
 	return nil;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 3;	
+	return 4;	
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	switch (section)
 	{
-		case 0: return 1;
-		case 1: return 2;
+		case 0: 
+        case 1: return 1;
 		case 2: return 2;
+		case 3: return 2;
 		default: break;
 	}
 	return 0;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if((indexPath.section == 0) && (indexPath.row == 0)) {
+        return 48.0; // this is the height of the AdMob ad
+    }
+    
+    return 44.0; // this is the generic cell height
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {	
 	switch (indexPath.section)
 	{
-		case 0:
+        case 0:
+        {
+            UITableViewCell *cell = (UITableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"MyIdentifier"] autorelease];
+            }
+            adController.adMobAd.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height);
+            [cell.contentView addSubview:adController.view];
+            return cell;
+        }
+		case 1:
 		{
 			switch (indexPath.row)
 			{
@@ -89,7 +112,7 @@
 				default: return nil;
 			}
 		}
-		case 1:
+		case 2:
 		{
 			switch (indexPath.row)
 			{
@@ -98,7 +121,7 @@
 				default: return nil;
 			}
 		}
-		case 2:
+		case 3:
 		{
 			switch (indexPath.row)
 			{
@@ -113,10 +136,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath
 {
 	return;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-	return 44;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -150,6 +169,8 @@
 	durationSlider.value = duration;
 	durationLabel.text = [NSString stringWithFormat:@"%dms", duration];
 	
+    adController = [[AdMobViewController alloc] init];
+    
     [super viewWillAppear:animated];
 }
 
@@ -159,13 +180,13 @@
 //}
 
 /*
-- (void)viewWillDisappear:(BOOL)animated {
-}
-*/
+ - (void)viewWillDisappear:(BOOL)animated {
+ }
+ */
 /*
-- (void)viewDidDisappear:(BOOL)animated {
-}
-*/
+ - (void)viewDidDisappear:(BOOL)animated {
+ }
+ */
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
     // Return YES for supported orientations

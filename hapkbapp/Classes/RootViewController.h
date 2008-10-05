@@ -1,4 +1,6 @@
 #import <UIKit/UIKit.h>
+@class AdMobViewController;
+
 @interface RootViewController : UITableViewController 
 {
 	IBOutlet	UITableViewCell		* vibrusEnabledCell;
@@ -16,6 +18,8 @@
 	IBOutlet	UITableViewCell		* durationCell;
 	IBOutlet	UISlider			* durationSlider;
 	IBOutlet	UILabel				* durationLabel;
+    
+    AdMobViewController *adController;
 }
 - (IBAction)enableVibrus:(id)sender;
 - (IBAction)setIntensity:(id)sender;

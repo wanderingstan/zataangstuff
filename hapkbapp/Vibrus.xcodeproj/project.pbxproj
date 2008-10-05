@@ -16,6 +16,11 @@
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		546079110E94ECBA00F44AE4 /* libAdMob-OS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460790D0E94ECBA00F44AE4 /* libAdMob-OS.a */; };
+		546079120E94ECBA00F44AE4 /* libAdMob-Simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460790E0E94ECBA00F44AE4 /* libAdMob-Simulator.a */; };
+		546079130E94ECBA00F44AE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546079100E94ECBA00F44AE4 /* ViewController.m */; };
+		5460791D0E94EDFD00F44AE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460791B0E94EDFD00F44AE4 /* CoreLocation.framework */; };
+		5460791E0E94EDFD00F44AE4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460791C0E94EDFD00F44AE4 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,14 @@
 		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5460790B0E94ECBA00F44AE4 /* AdMobDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMobDelegateProtocol.h; sourceTree = "<group>"; };
+		5460790C0E94ECBA00F44AE4 /* AdMobView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMobView.h; sourceTree = "<group>"; };
+		5460790D0E94ECBA00F44AE4 /* libAdMob-OS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libAdMob-OS.a"; sourceTree = "<group>"; };
+		5460790E0E94ECBA00F44AE4 /* libAdMob-Simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libAdMob-Simulator.a"; sourceTree = "<group>"; };
+		5460790F0E94ECBA00F44AE4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		546079100E94ECBA00F44AE4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5460791B0E94EDFD00F44AE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5460791C0E94EDFD00F44AE4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +56,10 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				546079110E94ECBA00F44AE4 /* libAdMob-OS.a in Frameworks */,
+				546079120E94ECBA00F44AE4 /* libAdMob-Simulator.a in Frameworks */,
+				5460791D0E94EDFD00F44AE4 /* CoreLocation.framework in Frameworks */,
+				5460791E0E94EDFD00F44AE4 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +69,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5460790A0E94ECBA00F44AE4 /* admob */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* VibrusAppDelegate.h */,
@@ -103,11 +121,26 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5460791B0E94EDFD00F44AE4 /* CoreLocation.framework */,
+				5460791C0E94EDFD00F44AE4 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5460790A0E94ECBA00F44AE4 /* admob */ = {
+			isa = PBXGroup;
+			children = (
+				5460790B0E94ECBA00F44AE4 /* AdMobDelegateProtocol.h */,
+				5460790C0E94ECBA00F44AE4 /* AdMobView.h */,
+				5460790D0E94ECBA00F44AE4 /* libAdMob-OS.a */,
+				5460790E0E94ECBA00F44AE4 /* libAdMob-Simulator.a */,
+				5460790F0E94ECBA00F44AE4 /* ViewController.h */,
+				546079100E94ECBA00F44AE4 /* ViewController.m */,
+			);
+			path = admob;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +208,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* VibrusAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				546079130E94ECBA00F44AE4 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +225,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vibrus_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/admob\"",
+				);
 				PRODUCT_NAME = Vibrus;
 			};
 			name = Debug;
@@ -203,6 +241,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vibrus_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/admob\"",
+				);
 				PRODUCT_NAME = Vibrus;
 			};
 			name = Release;
@@ -215,6 +257,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ./Classes;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.1;
