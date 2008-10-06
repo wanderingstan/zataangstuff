@@ -15,6 +15,7 @@
 
 extern void * _CTServerConnectionCreate(CFAllocatorRef, int (*)(void *, CFStringRef, CFDictionaryRef, void *), int *);
 extern int _CTServerConnectionSetVibratorState(int *, void *, int, int, float, float, float);
+extern int _CTSetVibratorState(int *, int, int, float, float, float);
 
 static void* connection = nil;
 static int x = 0;
@@ -57,8 +58,10 @@ static void start_vib () {
     int intensity = (prefs ? [[prefs objectForKey:@"intensity"] integerValue] : 2);
 //      NSLog(@"INTENSITY: %i", intensity);
 //      int intensity = 10;
-    if (!prefs || [[prefs objectForKey:@"vibrusEnabled"] integerValue])
+    if (!prefs || [[prefs objectForKey:@"vibrusEnabled"] integerValue]) {
         _CTServerConnectionSetVibratorState(&x, connection, 3, intensity, 0, 0, 0);
+        // _CTSetVibratorState(&x, 3, intensity, 0, 0, 0);
+    }
 }
 
 static void stop_vib () {

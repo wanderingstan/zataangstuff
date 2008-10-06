@@ -41,7 +41,7 @@ copy-Simulator:
 
 copy-OS:
 
-iphone = 192.168.0.103
+iphone = 192.168.0.120
 install: HapticKeyboard-OS.dylib copy-OS
 	ssh root@$(iphone) rm -f $(location)/HapticKeyboard.dylib
 	scp HapticKeyboard-OS.dylib root@$(iphone):$(location)/HapticKeyboard.dylib
@@ -51,6 +51,12 @@ install: HapticKeyboard-OS.dylib copy-OS
 distrib: install
 	mkdir -p distrib
 	scp root@$(iphone):$(location)/HapticKeyboard.dylib distrib/HapticKeyboard.dylib
+
+dovib: tests/dovib.m
+	$(CC) $(CFLAGS) -o tests/dovib $<  -F/Developer/Platforms/iPhone$(PLAT).platform/Developer/SDKs/iPhone$(PLAT)$(VERSION).sdk/System/Library/PrivateFrameworks -framework CoreMedia -framework Foundation
+	ssh root@$(iphone) rm -f /usr/local/bin/dovib 
+	scp tests/dovib root@$(iphone):/usr/local/bin/dovib
+	ssh root@$(iphone) ldid -S /usr/local/bin/dovib
 
 shutoff: tests/shutoff.m
 	$(CC) $(CFLAGS) -o tests/shutoff $<  -F/Developer/Platforms/iPhone$(PLAT).platform/Developer/SDKs/iPhone$(PLAT)$(VERSION).sdk/System/Library/PrivateFrameworks -framework CoreTelephony -framework Foundation
