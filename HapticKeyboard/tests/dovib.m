@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 
-void FigVibratorPlayVibrationWithDictionary(CFDictionaryRef dict);
+void FigVibratorPlayVibrationWithDictionary(CFDictionaryRef dict, int, float);
 void FigVibratorStartOneShot(int, int, int, int);
 int main(){
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -24,8 +24,8 @@ int main(){
     CFNumberRef values [4];
     float intensity = 1.0;
     float offDuration = 0.1;
-    float onDuration = 0.3;
-    float totalDuration = 0.4;
+    float onDuration = 1.3;
+    float totalDuration = 1.4;
 
     values [0] = CFNumberCreate (kCFAllocatorDefault, kCFNumberFloatType, &intensity);
     values [1] = CFNumberCreate (kCFAllocatorDefault, kCFNumberFloatType, &offDuration);
@@ -33,7 +33,8 @@ int main(){
     values [3] = CFNumberCreate (kCFAllocatorDefault, kCFNumberFloatType, &totalDuration);
 
     CFDictionaryRef dict = CFDictionaryCreate (kCFAllocatorDefault, (void *) keys, (void *) values, 4, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-    FigVibratorPlayVibrationWithDictionary (dict);
+    CFShow(dict);
+    FigVibratorPlayVibrationWithDictionary (dict, 1, 0.5);
 
     [pool release];
     return 0;
