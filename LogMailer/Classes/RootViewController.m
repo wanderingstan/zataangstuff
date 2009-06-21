@@ -10,7 +10,7 @@
 #import "LogMailerAppDelegate.h"
 
 #define LOG_PATH  @"/var/log/syslog"
-#define SYSLOG_BYTES_TO_SEND    (20 * 1024)
+#define SYSLOG_BYTES_TO_SEND    (60 * 1024)
 
 @implementation RootViewController
 
@@ -76,6 +76,9 @@
         
         while (fgets (buffer, sizeof (buffer), fp)) {
             if (ftell (fp) < position)
+                continue;
+            
+            if (strstr (buffer, "SCHelper") || strstr (buffer, "localhost kernel")) 
                 continue;
             
             [result appendData:[NSData dataWithBytes:buffer length:strlen(buffer)]];

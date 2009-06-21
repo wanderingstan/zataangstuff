@@ -202,7 +202,6 @@ static void relayDataCallBack(CFSocketRef socket, CFSocketCallBackType type, CFD
 }
 
 - (void) inject {
-    NSLog(@"SpringBridgeRelay inject initializing");
     sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_len = sizeof(struct sockaddr_in);

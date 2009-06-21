@@ -1,9 +1,9 @@
 PLAT = Simulator
-VERSION = 2.1
+VERSION = 3.0
 DYLIB = libsubstrate.dylib
 
-CC = /Developer/Platforms/iPhone$(PLAT).platform/Developer/usr/bin/g++
-CFLAGS = -isysroot /Developer/Platforms/iPhone$(PLAT).platform/Developer/SDKs/iPhoneOS$(VERSION).sdk
+CC=/Developer/Platforms/iPhone$(PLAT).platform/Developer/usr/bin/g++
+CFLAGS=-isysroot /Developer/Platforms/iPhone$(PLAT).platform/Developer/SDKs/iPhoneOS$(VERSION).sdk
 ifeq ($(PLAT),Simulator)
 CFLAGS += -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks \
 	  -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=20000 \
